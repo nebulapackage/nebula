@@ -1,0 +1,18 @@
+<?php
+
+namespace DummyNamespace;
+
+use Larsklopstra\Nebula\Contracts\NebulaField;
+
+class DummyClass extends NebulaField
+{
+    public function getFormComponent()
+    {
+        return 'nebula.forms.field-name';
+    }
+
+    public function getDetailsComponent()
+    {
+        return 'nebula::fields.details.text';
+    }
+}

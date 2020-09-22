@@ -1,0 +1,18 @@
+<?php
+
+namespace DummyNamespace;
+
+use Larsklopstra\Nebula\Contracts\NebulaDashboard;
+
+class DummyClass extends NebulaDashboard
+{
+    public function icon()
+    {
+        return 'trending-up';
+    }
+
+    public function metrics(): array
+    {
+        return [];
+    }
+}

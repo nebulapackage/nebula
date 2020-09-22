@@ -1,0 +1,23 @@
+<?php
+
+namespace DummyNamespace;
+
+use Larsklopstra\Nebula\Contracts\NebulaResource;
+
+class DummyClass extends NebulaResource
+{
+    public function searchable(): array
+    {
+        return [];
+    }
+
+    public function columns(): array
+    {
+        return [];
+    }
+
+    public function fields(): array
+    {
+        return [];
+    }
+}

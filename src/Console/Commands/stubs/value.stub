@@ -1,0 +1,16 @@
+<?php
+
+namespace DummyNamespace;
+
+use Larsklopstra\Nebula\Metrics\ValueMetric;
+
+class DummyClass extends ValueMetric
+{
+    public function calculate()
+    {
+    }
+
+    public function label()
+    {
+    }
+}

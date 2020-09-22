@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .button {
+    @apply inline-flex items-center justify-center px-3 text-sm font-medium transition duration-150 ease-in-out rounded-md h-9 focus:outline-none;
+  }
+
+  .button-primary {
+    @apply text-white shadow bg-primary-600 hover:bg-primary-500 focus:bg-primary-700;
+  }
+
+  .button-secondary {
+    @apply text-gray-800 bg-white border border-gray-300 shadow-sm hover:text-gray-600 hover:border-gray-200 focus:bg-gray-50;
+  }
+
+  .icon-button {
+    @apply text-gray-400 transition duration-150 ease-in-out focus:outline-none hover:text-gray-300 focus:text-gray-500;
+  }
+}

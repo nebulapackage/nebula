@@ -1,0 +1,29 @@
+{
+  "Resources": "Bronnen",
+  ":Resources overview": ":Resources overzicht",
+  ":Resource details": ":Resource details",
+  "Create :resource": ":Resource aanmaken",
+  "Edit :resource": ":Resource bewerken",
+  "Update :resource": ":Resource bijwerken",
+  "Delete :resource": ":Resource verwijderen",
+  "Back to :resources": "Terug naar :resources",
+
+  ":Resource created": ":Resource aangemaakt",
+  ":Resource updated": ":Resource bijgewerkt",
+  ":Resource deleted": ":Resource verwijderd",
+
+  "Expand :field": ":Field uitklappen",
+  "Collapse :field": ":Field inklappen",
+
+  "Select filter": "Selecteer filter",
+  "Apply filters": "Filters toepassen",
+  "Remove filters": "Filters verwijderen",
+  "Search anything...": "Zoeken in...",
+  "Are you sure?": "Weetje het zeker?",
+  "Last month": "Afgelopen maand",
+
+  "No :resources found": "Geen :resources gevonden",
+  ":Resources you've created will show up here.": ":Resources die jij hebt aangemaakt worden hier getoond.",
+
+  ":count result | :count results": ":count resultaat | :count resultaten"
+}

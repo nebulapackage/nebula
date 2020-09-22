@@ -1,0 +1,7 @@
+build
+composer.lock
+docs
+vendor
+coverage
+node_modules
+.php_cs.cache

@@ -1,0 +1,15 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
+use Larsklopstra\Nebula\Contracts\NebulaFilter;
+
+class DummyClass extends NebulaFilter
+{
+    public function build(Builder $query, Request $request): Builder
+    {
+        return $query->latest();
+    }
+}
