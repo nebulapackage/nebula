@@ -8,6 +8,8 @@ return [
 
     'prefix' => '/nebula',
 
+    'domain' => null,
+
     'auth_strategy' => NebulaIPAuthStrategy::class,
 
     'allowed_ips' => [

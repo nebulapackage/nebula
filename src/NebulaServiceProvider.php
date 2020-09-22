@@ -56,7 +56,9 @@ class NebulaServiceProvider extends ServiceProvider
     public function mapWebRoutes(): void
     {
         Route::middleware(['web', config('nebula.auth_strategy')])
-            ->prefix(config('nebula.prefix'))->name('nebula.')
+            ->prefix(config('nebula.prefix'))
+            ->domain(config('nebula.domain', null))
+            ->name('nebula.')
             ->group(__DIR__.'/../routes/web.php');
     }
 
