@@ -9,7 +9,7 @@ Nebula makes you write less code and lets you focus more on the product by lesse
 
 **This is the pre 1.0.0 version, the API might be subject to change. Please be careful with using this version in production apps.**
 
-Join our [Discord](https://discord.gg/G57CquN) if you have any questions or would like to be an active member in the Nebula community.
+Join our [Discord](https://discord.gg/xRndbjE) if you have any questions or would like to be an active member in the Nebula community.
 
 ## Installation
 
