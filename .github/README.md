@@ -1,5 +1,7 @@
 # Nebula
 
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://nebulapackage.com/preview.png"></a></p>
+
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/larsklopstra/nebula.svg?style=flat-square)](https://packagist.org/packages/larsklopstra/nebula)
 [![Total Downloads](https://img.shields.io/packagist/dt/larsklopstra/nebula.svg?style=flat-square)](https://packagist.org/packages/larsklopstra/nebula)
 
