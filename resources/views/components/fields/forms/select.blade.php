@@ -10,13 +10,13 @@
             <option value="">Select an option</option>
 
             @empty(!$field->getOptions())
-            @foreach ($field->getOptions() as $key => $value)
-            <option
-                {{ (old($field->getName()) ?? Arr::get($item, $field->getName()) ?? $field->getValue()) == $value ? 'selected' : '' }}
-                value="{{ $value }}">
-                {{ $key }}
-            </option>
-            @endforeach
+                @foreach ($field->getOptions() as $key => $value)
+                    <option
+                        {{ (old($field->getName()) ?? (Arr::get($item, $field->getName()) ?? $field->getValue())) == $value ? 'selected' : '' }}
+                        value="{{ $value }}">
+                        {{ $key }}
+                    </option>
+                @endforeach
             @endempty
 
         </select>

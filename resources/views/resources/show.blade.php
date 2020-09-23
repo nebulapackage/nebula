@@ -35,7 +35,7 @@
             </x-slot>
 
             @foreach ($resource->fields() as $field)
-            <x-dynamic-component :item="$item" :component="$field->getDetailsComponent()" :field="$field" />
+                <x-dynamic-component :item="$item" :component="$field->getDetailsComponent()" :field="$field" />
             @endforeach
 
         </x-nebula::card>
