@@ -110,6 +110,16 @@ abstract class NebulaResource
      *
      * @return array
      */
+    public function indexFields(): array
+    {
+        return $this->fields();
+    }
+
+    /**
+     * Returns the fields used for the edit form.
+     *
+     * @return array
+     */
     public function editFields(): array
     {
         return $this->fields();
@@ -124,13 +134,6 @@ abstract class NebulaResource
     {
         return $this->fields();
     }
-
-    /**
-     * Returns the columns used in the index table.
-     *
-     * @return array
-     */
-    abstract public function columns(): array;
 
     public function filters(): array
     {

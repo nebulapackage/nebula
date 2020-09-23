@@ -1,7 +1,7 @@
 <x-nebula::layouts.shell :title="__('Edit :resource', ['resource' => $resource->singularName()])"
-    :back="route('nebula.resources.show', [$resource->name(), $model])">
+    :back="route('nebula.resources.show', [$resource->name(), $item])">
 
-    <x-nebula::form :action="route('nebula.resources.update', [$resource->name(), $model])" method="PATCH">
+    <x-nebula::form :action="route('nebula.resources.update', [$resource->name(), $item])" method="PATCH">
 
         <div class="-mx-4 sm:mx-0">
             <x-nebula::card>
@@ -10,8 +10,8 @@
                     {{ __('Edit :resource', ['resource' => $resource->singularName()]) }}
                 </x-slot>
 
-                @foreach ($fields as $field)
-                    <x-dynamic-component :component="$field->getFormComponent()" :field="$field" />
+                @foreach ($resource->fields() as $field)
+                <x-dynamic-component :item="$item" :component="$field->getFormComponent()" :field="$field" />
                 @endforeach
 
                 <x-nebula::form-actions>

@@ -10,7 +10,7 @@
                     {{ __('Create :resource', ['resource' => $resource->singularName()]) }}
                 </x-slot>
 
-                @foreach ($fields as $field)
+                @foreach ($resource->fields() as $field)
                     <x-dynamic-component :component="$field->getFormComponent()" :field="$field" />
                 @endforeach
 

@@ -3,7 +3,7 @@
 
     <x-slot name="actions">
 
-        <x-nebula::form :action="route('nebula.resources.destroy', [$resource->name(), $model])" method="DELETE">
+        <x-nebula::form :action="route('nebula.resources.destroy', [$resource->name(), $item])" method="DELETE">
 
             <div x-data="{ confirmed: false }">
 
@@ -21,7 +21,7 @@
 
         </x-nebula::form>
 
-        <a href="{{ route('nebula.resources.edit', [$resource->name(), $model]) }}" class="button button-secondary">
+        <a href="{{ route('nebula.resources.edit', [$resource->name(), $item]) }}" class="button button-secondary">
             {{ __('Edit :resource', ['resource' => $resource->singularName()]) }}
         </a>
 
@@ -34,8 +34,8 @@
                 {{ __(':Resource details', ['resource' => $resource->pluralName()]) }}
             </x-slot>
 
-            @foreach ($fields as $field)
-                <x-dynamic-component :component="$field->getDetailsComponent()" :field="$field" />
+            @foreach ($resource->fields() as $field)
+            <x-dynamic-component :item="$item" :component="$field->getDetailsComponent()" :field="$field" />
             @endforeach
 
         </x-nebula::card>

@@ -16,20 +16,6 @@ class ResourceController
     use Toasts;
 
     /**
-     * Populates the resource its fields with a given model.
-     *
-     * @param mixed $fields
-     * @param mixed $model
-     * @return void
-     */
-    private function populateFieldsWith($fields, $model): void
-    {
-        foreach ($fields as $field) {
-            $field->value($model[$field->getName()]);
-        }
-    }
-
-    /**
      * Returns the index view with metrics, search filters and resource entries.
      *
      * @param Request $request
@@ -45,20 +31,18 @@ class ResourceController
 
         $builder = $resource->model()::query()->withoutGlobalScopes();
 
-        if (! empty($filter)) {
+        if (!empty($filter)) {
             $builder = $resource->resolveFilter($filter)->build($builder, $request);
         }
 
-        if (! empty($search)) {
+        if (!empty($search)) {
             foreach ($resource->searchable() as $column) {
                 $builder->orWhere($column, 'like', "%$search%");
             }
         }
 
         return view('nebula::resources.index', [
-            'model' => $builder->paginate(),
-            'columns' => $resource->columns(),
-            'metrics' => $resource->metrics(),
+            'items' => $builder->paginate(),
             'resource' => $resource,
             'activeFilter' => $filter,
             'activeSearch' => $search,
@@ -69,20 +53,15 @@ class ResourceController
      * Shows a resource entry.
      *
      * @param NebulaResource $resource
-     * @param mixed $model
+     * @param mixed $item
      * @return View
      * @throws BindingResolutionException
      */
-    public function show(NebulaResource $resource, $model): View
+    public function show(NebulaResource $resource, $item): View
     {
-        $fields = $resource->fields();
-
-        $this->populateFieldsWith($fields, $model);
-
         return view('nebula::resources.show', [
-            'fields' => $fields,
             'resource' => $resource,
-            'model' => $model,
+            'item' => $item,
         ]);
     }
 
@@ -90,20 +69,15 @@ class ResourceController
      * Shows the edit form of a resource entry.
      *
      * @param NebulaResource $resource
-     * @param mixed $model
+     * @param mixed $item
      * @return View
      * @throws BindingResolutionException
      */
-    public function edit(NebulaResource $resource, $model): View
+    public function edit(NebulaResource $resource, $item): View
     {
-        $fields = $resource->editFields();
-
-        $this->populateFieldsWith($fields, $model);
-
         return view('nebula::resources.edit', [
-            'fields' => $fields,
             'resource' => $resource,
-            'model' => $model,
+            'item' => $item,
         ]);
     }
 
@@ -112,17 +86,17 @@ class ResourceController
      *
      * @param Request $request
      * @param NebulaResource $resource
-     * @param mixed $model
+     * @param mixed $item
      * @return RedirectResponse
      * @throws BindingResolutionException
      */
-    public function update(Request $request, NebulaResource $resource, $model): RedirectResponse
+    public function update(Request $request, NebulaResource $resource, $item): RedirectResponse
     {
         $validated = $request->validate($resource->rules(
             $resource->editFields()
         ));
 
-        $resource->update($model, $validated);
+        $resource->update($item, $validated);
 
         $this->toast(__(':Resource updated', [
             'resource' => $resource->singularName(),
@@ -141,7 +115,6 @@ class ResourceController
     public function create(NebulaResource $resource): View
     {
         return view('nebula::resources.create', [
-            'fields' => $resource->createFields(),
             'resource' => $resource,
         ]);
     }
@@ -174,14 +147,14 @@ class ResourceController
      * Deletes a resource entry.
      *
      * @param NebulaResource $resource
-     * @param mixed $model
+     * @param mixed $item
      * @return RedirectResponse
      * @throws BindingResolutionException
      * @throws RouteNotFoundException
      */
-    public function destroy(NebulaResource $resource, $model): RedirectResponse
+    public function destroy(NebulaResource $resource, $item): RedirectResponse
     {
-        $resource->delete($model);
+        $resource->delete($item);
 
         $this->toast(__(':Resource deleted', [
             'resource' => $resource->singularName(),

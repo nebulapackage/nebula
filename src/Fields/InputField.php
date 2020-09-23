@@ -33,9 +33,4 @@ class InputField extends NebulaField
     {
         return $this->type;
     }
-
-    public function getDetailsComponent()
-    {
-        return 'nebula::fields.details.text';
-    }
 }

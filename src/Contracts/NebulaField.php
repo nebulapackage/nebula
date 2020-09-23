@@ -13,7 +13,17 @@ abstract class NebulaField
     protected bool $required = false;
     protected array $rules = [];
 
-    public function make(string $name): self
+    public function __construct(string $name)
+    {
+        $this->name($name);
+    }
+
+    public static function make(string $name): self
+    {
+        return new static($name);
+    }
+
+    public function name(string $name): self
     {
         $this->name = $name;
 
@@ -48,7 +58,7 @@ abstract class NebulaField
 
     public function rules($rules): self
     {
-        if (! is_array($rules)) {
+        if (!is_array($rules)) {
             $this->rules = explode('|', $rules);
 
             return $this;
@@ -115,5 +125,15 @@ abstract class NebulaField
     public function getFormComponent()
     {
         return "nebula::fields.forms.{$this->getComponentName()}";
+    }
+
+    /**
+     * Returns the table blade view for this component.
+     *
+     * @return string
+     */
+    public function getTableComponent()
+    {
+        return "nebula::fields.tables.{$this->getComponentName()}";
     }
 }
