@@ -9,3 +9,6 @@
 /.scrutinizer.yml   export-ignore
 /tests              export-ignore
 /.editorconfig      export-ignore
+/.github            export-ignore
+/.php_cs.dist       export-ignore
+/.prettierrc        export-ignore
