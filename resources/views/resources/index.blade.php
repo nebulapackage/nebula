@@ -42,7 +42,7 @@
 
     </x-slot>
 
-    @empty(!$metrics)
+    @empty(!$resource->metrics())
         <div class="mb-8 space-y-4">
 
             <h2 class="text-base font-medium font-display">
@@ -60,7 +60,7 @@
         </div>
     @endempty
 
-    @empty($model->count())
+    @empty($items->count())
         <div class="flex flex-col items-center justify-center px-6 py-8 text-center">
 
             <x-heroicon-o-information-circle class="w-16 h-16 text-gray-400" />
@@ -91,10 +91,10 @@
                         <thead>
                             <tr>
 
-                                @foreach ($columns as $column)
+                                @foreach ($resource->indexFields() as $field)
                                     <th
                                         class="px-4 py-2 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
-                                        {{ $column }}
+                                        {{ $field->getLabel() }}
                                     </th>
                                 @endforeach
 
@@ -102,13 +102,14 @@
                         </thead>
                         <tbody>
 
-                            @foreach ($model as $entry)
+                            @foreach ($items as $item)
                                 <tr>
 
-                                    @foreach ($columns as $column)
+                                    @foreach ($resource->indexFields() as $field)
                                         <td class="p-4 text-sm border-t border-gray-200">
-                                            <a href="{{ route('nebula.resources.show', [$resource->name(), $entry->id]) }}">
-                                                {{ $entry[$column] }}
+                                            <a href="{{ route('nebula.resources.show', [$resource->name(), $item->id]) }}">
+                                                <x-dynamic-component :item="$item" :component="$field->getTableComponent()"
+                                                    :field="$field" />
                                             </a>
                                         </td>
                                     @endforeach
@@ -121,7 +122,7 @@
                 </div>
 
                 <footer class="px-4 py-2">
-                    {{ $model->withQueryString()->links('nebula::components.pagination') }}
+                    {{ $items->withQueryString()->links('nebula::components.pagination') }}
                 </footer>
 
             </x-nebula::card>

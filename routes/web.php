@@ -14,10 +14,10 @@ Route::name('resources.')->prefix('/resources')->group(function () {
     Route::get('/{resource}/create', [ResourceController::class, 'create'])->name('create');
     Route::post('/{resource}/create', [ResourceController::class, 'store'])->name('store');
 
-    Route::get('/{resource}/{model}/edit', [ResourceController::class, 'edit'])->name('edit');
-    Route::patch('/{resource}/{model}/edit', [ResourceController::class, 'update'])->name('update');
+    Route::get('/{resource}/{item}/edit', [ResourceController::class, 'edit'])->name('edit');
+    Route::patch('/{resource}/{item}/edit', [ResourceController::class, 'update'])->name('update');
 
-    Route::get('/{resource}/{model}', [ResourceController::class, 'show'])->name('show');
+    Route::get('/{resource}/{item}', [ResourceController::class, 'show'])->name('show');
 
-    Route::delete('/{resource}/{model}', [ResourceController::class, 'destroy'])->name('destroy');
+    Route::delete('/{resource}/{item}', [ResourceController::class, 'destroy'])->name('destroy');
 });

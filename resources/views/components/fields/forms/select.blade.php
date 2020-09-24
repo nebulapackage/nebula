@@ -1,4 +1,4 @@
-@props(['field'])
+@props(['field', 'item' => null])
 
 <x-nebula::form-row :field="$field">
 
@@ -11,7 +11,8 @@
 
             @empty(!$field->getOptions())
                 @foreach ($field->getOptions() as $key => $value)
-                    <option {{ (old($field->getName()) ?? $field->getValue()) == $value ? 'selected' : '' }}
+                    <option
+                        {{ (old($field->getName()) ?? (Arr::get($item, $field->getName()) ?? $field->getValue())) == $value ? 'selected' : '' }}
                         value="{{ $value }}">
                         {{ $key }}
                     </option>

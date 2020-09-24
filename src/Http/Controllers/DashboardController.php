@@ -21,7 +21,6 @@ class DashboardController
     public function index(NebulaDashboard $dashboard): View
     {
         return view('nebula::dashboards.index', [
-            'metrics' => $dashboard->metrics(),
             'dashboard' => $dashboard,
         ]);
     }

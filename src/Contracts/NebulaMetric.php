@@ -5,7 +5,7 @@ namespace Larsklopstra\Nebula\Contracts;
 use Closure;
 use Illuminate\Support\Carbon;
 
-abstract class NebulaMetric
+abstract class NebulaMetric implements ShouldCache, ShouldRender, ShouldSpanCols
 {
     /**
      * Returns the label.

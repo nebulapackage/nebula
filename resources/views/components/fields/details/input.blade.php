@@ -3,7 +3,7 @@
 <x-nebula::form-row :field="$field">
 
     <p class="text-sm">
-        {{ array_search(Arr::get($item, $field->getName()) ?? $field->getValue(), $field->getOptions()) }}
+        {{ Arr::get($item, $field->getName()) ?? $field->getValue() }}
     </p>
 
 </x-nebula::form-row>
