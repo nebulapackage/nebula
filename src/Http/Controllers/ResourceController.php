@@ -29,14 +29,14 @@ class ResourceController
         $filter = $request->query('filter');
         $search = $request->query('search');
 
-        $builder = $resource->model()::query()->withoutGlobalScopes();
+        $builder = $resource->indexQuery();
 
         if (! empty($filter)) {
             $builder = $resource->resolveFilter($filter)->build($builder, $request);
         }
 
         if (! empty($search)) {
-            foreach ($resource->searchable() as $column) {
+            foreach ($resource->searchable as $column) {
                 $builder->orWhere($column, 'like', "%$search%");
             }
         }
@@ -96,7 +96,7 @@ class ResourceController
             $resource->editFields()
         ));
 
-        $resource->update($item, $validated);
+        $resource->editQuery($item, $validated);
 
         $this->toast(__(':Resource updated', [
             'resource' => $resource->singularName(),
@@ -134,7 +134,7 @@ class ResourceController
             $resource->createFields()
         ));
 
-        $resource->store($resource->model(), $validated);
+        $resource->createQuery($resource->model(), $validated);
 
         $this->toast(__(':Resource created', [
             'resource' => $resource->singularName(),
@@ -154,7 +154,7 @@ class ResourceController
      */
     public function destroy(NebulaResource $resource, $item): RedirectResponse
     {
-        $resource->delete($item);
+        $resource->deleteQuery($item);
 
         $this->toast(__(':Resource deleted', [
             'resource' => $resource->singularName(),
