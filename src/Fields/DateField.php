@@ -10,20 +10,16 @@ class DateField extends NebulaField
 {
     protected string $format = 'Y-m-d';
 
-    public function getValue(): string
-    {
-        return Carbon::parse($this->value)->format($this->format);
-    }
-
     /**
-     * Returns a complaint date format for the HTML datepicker.
-     *
-     * @return string
-     * @throws InvalidFormatException
+     * Applies the date format in the front-end
+     * 
+     * @param mixed $date 
+     * @return string 
+     * @throws InvalidFormatException 
      */
-    public function getHTMLDatePickerFormatValue(): string
+    public function applyFormat($date)
     {
-        return Carbon::parse($this->value)->format('Y-m-d');
+        return Carbon::parse($date)->format($this->format);
     }
 
     /**
