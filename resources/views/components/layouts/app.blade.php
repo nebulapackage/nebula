@@ -8,7 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&family=Inter:wght@400;500&display=swap"
         rel="stylesheet">
     <link href="{{ mix('css/app.css', 'vendor/nebula') }}" rel="stylesheet">
+    @stack('styles')
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.min.js" defer></script>
+    @stack('scripts')
 </head>
 
 <body class="font-sans antialiased text-gray-800 bg-gray-900">
