@@ -96,7 +96,7 @@ class ResourceController
             $resource->editFields()
         ));
 
-        $resource->editQuery($item, $validated);
+        $resource->updateQuery($item, $validated);
 
         $this->toast(__(':Resource updated', [
             'resource' => $resource->singularName(),
@@ -134,7 +134,7 @@ class ResourceController
             $resource->createFields()
         ));
 
-        $resource->createQuery($resource->model(), $validated);
+        $resource->storeQuery($resource->model(), $validated);
 
         $this->toast(__(':Resource created', [
             'resource' => $resource->singularName(),
@@ -154,7 +154,7 @@ class ResourceController
      */
     public function destroy(NebulaResource $resource, $item): RedirectResponse
     {
-        $resource->deleteQuery($item);
+        $resource->destroyQuery($item);
 
         $this->toast(__(':Resource deleted', [
             'resource' => $resource->singularName(),

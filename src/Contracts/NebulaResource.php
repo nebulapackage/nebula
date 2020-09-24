@@ -196,7 +196,7 @@ abstract class NebulaResource
      * @param mixed $data
      * @return void
      */
-    public function editQuery($model, $data)
+    public function updateQuery($model, $data)
     {
         $model->update($data);
     }
@@ -208,18 +208,18 @@ abstract class NebulaResource
      * @param mixed $data
      * @return void
      */
-    public function createQuery($model, $data)
+    public function storeQuery($model, $data)
     {
         $model::create($data);
     }
 
     /**
-     * Specifies the delete query.
+     * Specifies the destroy query.
      *
      * @param mixed $model
      * @return void
      */
-    public function deleteQuery($model)
+    public function destroyQuery($model)
     {
         $model->delete();
     }
