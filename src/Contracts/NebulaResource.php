@@ -8,14 +8,13 @@ use Illuminate\Support\Stringable;
 
 abstract class NebulaResource
 {
-    /**
-     * Specifies the searchable resource columns.
-     *
-     * @return array
-     */
-    public function searchable(): array
+    protected $with = [];
+
+    protected $searchable = [];
+
+    public function searchable()
     {
-        return [];
+        return $this->searchable;
     }
 
     /**
@@ -178,13 +177,26 @@ abstract class NebulaResource
     }
 
     /**
+     * The query for the index view.
+     *
+     * @return mixed
+     * @throws Exception
+     */
+    public function indexQuery()
+    {
+        return $this->model()::query()
+            ->withoutGlobalScopes()
+            ->with($this->with);
+    }
+
+    /**
      * Specifies the update query.
      *
      * @param mixed $model
      * @param mixed $data
      * @return void
      */
-    public function update($model, $data)
+    public function updateQuery($model, $data)
     {
         $model->update($data);
     }
@@ -196,18 +208,18 @@ abstract class NebulaResource
      * @param mixed $data
      * @return void
      */
-    public function store($model, $data)
+    public function storeQuery($model, $data)
     {
         $model::create($data);
     }
 
     /**
-     * Specifies the delete query.
+     * Specifies the destroy query.
      *
      * @param mixed $model
      * @return void
      */
-    public function delete($model)
+    public function destroyQuery($model)
     {
         $model->delete();
     }

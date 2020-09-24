@@ -6,10 +6,7 @@ use Larsklopstra\Nebula\Contracts\NebulaResource;
 
 class DummyClass extends NebulaResource
 {
-    public function searchable(): array
-    {
-        return [];
-    }
+    protected $searchable = [];
 
     public function columns(): array
     {
