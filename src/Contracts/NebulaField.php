@@ -14,9 +14,9 @@ abstract class NebulaField
     protected array $rules = [];
 
     /**
-     * Construct the field
-     * 
-     * @param string $name 
+     * Construct the field.
+     *
+     * @param string $name
      */
     public function __construct(string $name)
     {
@@ -24,10 +24,10 @@ abstract class NebulaField
     }
 
     /**
-     * Make a field
-     * 
-     * @param string $name 
-     * @return NebulaField 
+     * Make a field.
+     *
+     * @param string $name
+     * @return NebulaField
      */
     public static function make(string $name): self
     {
@@ -35,10 +35,10 @@ abstract class NebulaField
     }
 
     /**
-     * Set the name
-     * 
-     * @param string $name 
-     * @return NebulaField 
+     * Set the name.
+     *
+     * @param string $name
+     * @return NebulaField
      */
     public function name(string $name): self
     {
@@ -53,10 +53,10 @@ abstract class NebulaField
     }
 
     /**
-     * Set the label
-     * 
-     * @param mixed $label 
-     * @return NebulaField 
+     * Set the label.
+     *
+     * @param mixed $label
+     * @return NebulaField
      */
     public function label($label): self
     {
@@ -66,10 +66,10 @@ abstract class NebulaField
     }
 
     /**
-     * Set the value
-     * 
-     * @param mixed $value 
-     * @return NebulaField 
+     * Set the value.
+     *
+     * @param mixed $value
+     * @return NebulaField
      */
     public function value($value): self
     {
@@ -79,10 +79,10 @@ abstract class NebulaField
     }
 
     /**
-     * Set the required property
-     * 
-     * @param bool $required 
-     * @return NebulaField 
+     * Set the required property.
+     *
+     * @param bool $required
+     * @return NebulaField
      */
     public function required(bool $required = true): self
     {
@@ -92,14 +92,14 @@ abstract class NebulaField
     }
 
     /**
-     * Set the rules
-     * 
-     * @param mixed $rules 
-     * @return NebulaField 
+     * Set the rules.
+     *
+     * @param mixed $rules
+     * @return NebulaField
      */
     public function rules($rules): self
     {
-        if (!is_array($rules)) {
+        if (! is_array($rules)) {
             $this->rules = explode('|', $rules);
 
             return $this;
@@ -111,9 +111,9 @@ abstract class NebulaField
     }
 
     /**
-     * Get the name
-     * 
-     * @return string 
+     * Get the name.
+     *
+     * @return string
      */
     public function getName()
     {
@@ -126,9 +126,9 @@ abstract class NebulaField
     }
 
     /**
-     * Get the value
-     * 
-     * @return string 
+     * Get the value.
+     *
+     * @return string
      */
     public function getValue()
     {
@@ -136,9 +136,9 @@ abstract class NebulaField
     }
 
     /**
-     * Get the required property
-     * 
-     * @return bool 
+     * Get the required property.
+     *
+     * @return bool
      */
     public function getRequired(): bool
     {
@@ -146,9 +146,9 @@ abstract class NebulaField
     }
 
     /**
-     * Get the rules
-     * 
-     * @return array 
+     * Get the rules.
+     *
+     * @return array
      */
     public function getRules(): array
     {

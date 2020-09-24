@@ -11,11 +11,11 @@ class DateField extends NebulaField
     protected string $format = 'Y-m-d';
 
     /**
-     * Applies the date format in the front-end
-     * 
-     * @param mixed $date 
-     * @return string 
-     * @throws InvalidFormatException 
+     * Applies the date format in the front-end.
+     *
+     * @param mixed $date
+     * @return string
+     * @throws InvalidFormatException
      */
     public function applyFormat($date)
     {

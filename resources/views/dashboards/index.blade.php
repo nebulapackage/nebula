@@ -8,7 +8,7 @@
 
         <div class="grid grid-cols-12 gap-6">
 
-            @foreach ($metrics as $metric)
+            @foreach ($dashboard->metrics() as $metric)
                 <x-dynamic-component :component="$metric->component()" :metric="$metric" />
             @endforeach
 

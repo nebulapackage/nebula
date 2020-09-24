@@ -31,11 +31,11 @@ class ResourceController
 
         $builder = $resource->model()::query()->withoutGlobalScopes();
 
-        if (!empty($filter)) {
+        if (! empty($filter)) {
             $builder = $resource->resolveFilter($filter)->build($builder, $request);
         }
 
-        if (!empty($search)) {
+        if (! empty($search)) {
             foreach ($resource->searchable() as $column) {
                 $builder->orWhere($column, 'like', "%$search%");
             }
