@@ -12,6 +12,11 @@ abstract class NebulaResource
 
     protected $searchable = [];
 
+    public function searchable()
+    {
+        return $this->searchable;
+    }
+
     /**
      * Specifies the metrics which should be displayed.
      *

@@ -36,7 +36,7 @@ class ResourceController
         }
 
         if (! empty($search)) {
-            foreach ($resource->searchable as $column) {
+            foreach ($resource->searchable() as $column) {
                 $builder->orWhere($column, 'like', "%$search%");
             }
         }
