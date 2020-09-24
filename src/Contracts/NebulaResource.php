@@ -177,10 +177,10 @@ abstract class NebulaResource
     }
 
     /**
-     * The query for the index view
-     * 
-     * @return mixed 
-     * @throws Exception 
+     * The query for the index view.
+     *
+     * @return mixed
+     * @throws Exception
      */
     public function indexQuery()
     {
