@@ -91,7 +91,7 @@
                         <thead>
                             <tr>
 
-                                @foreach ($resource->fields() as $field)
+                                @foreach ($resource->indexFields() as $field)
                                     <th
                                         class="px-4 py-2 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
                                         {{ $field->getLabel() }}
@@ -105,7 +105,7 @@
                             @foreach ($items as $item)
                                 <tr>
 
-                                    @foreach ($resource->fields() as $field)
+                                    @foreach ($resource->indexFields() as $field)
                                         <td class="p-4 text-sm border-t border-gray-200">
                                             <a href="{{ route('nebula.resources.show', [$resource->name(), $item->id]) }}">
                                                 <x-dynamic-component :item="$item" :component="$field->getTableComponent()"

@@ -10,7 +10,7 @@
                     {{ __('Edit :resource', ['resource' => $resource->singularName()]) }}
                 </x-slot>
 
-                @foreach ($resource->fields() as $field)
+                @foreach ($resource->editFields() as $field)
                     <x-dynamic-component :item="$item" :component="$field->getFormComponent()" :field="$field" />
                 @endforeach
 
