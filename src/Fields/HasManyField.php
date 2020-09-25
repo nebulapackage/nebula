@@ -4,10 +4,13 @@ namespace Larsklopstra\Nebula\Fields;
 
 use Illuminate\Support\Str;
 use Larsklopstra\Nebula\Contracts\NebulaField;
+use Larsklopstra\Nebula\Fields\Concerns\HasPagination;
+use Larsklopstra\Nebula\Fields\Concerns\HasRelation;
 
 class HasManyField extends NebulaField
 {
-    protected string $relation;
+    use HasRelation, HasPagination;
+
     protected array $fields;
 
     public function name(string $name): self
@@ -22,18 +25,6 @@ class HasManyField extends NebulaField
         $this->relation = $name;
 
         return $this;
-    }
-
-    public function relation(string $relation): self
-    {
-        $this->relation = $relation;
-
-        return $this;
-    }
-
-    public function getRelation()
-    {
-        return $this->relation;
     }
 
     public function fields($fields): self

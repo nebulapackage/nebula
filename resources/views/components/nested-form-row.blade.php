@@ -6,6 +6,6 @@
 
 </header>
 
-<div class="p-4 space-y-4 bg-gray-50">
+<div class="p-2 space-y-2 bg-gray-50">
     {{ $slot }}
 </div>

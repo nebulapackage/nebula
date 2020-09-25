@@ -4,11 +4,13 @@ namespace Larsklopstra\Nebula\Fields;
 
 use Illuminate\Support\Str;
 use Larsklopstra\Nebula\Contracts\NebulaField;
+use Larsklopstra\Nebula\Fields\Concerns\HasRelation;
 
 class BelongsToField extends NebulaField
 {
+    use HasRelation;
+
     protected string $displays = 'name';
-    protected string $relation;
 
     public function name(string $name): self
     {
@@ -31,20 +33,8 @@ class BelongsToField extends NebulaField
         return $this;
     }
 
-    public function relation(string $relation): self
-    {
-        $this->relation = $relation;
-
-        return $this;
-    }
-
     public function getDisplays()
     {
         return $this->displays;
-    }
-
-    public function getRelation()
-    {
-        return $this->relation;
     }
 }

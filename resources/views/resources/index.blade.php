@@ -121,7 +121,7 @@
                     </table>
                 </div>
 
-                <footer class="px-4 py-2">
+                <footer class="p-2">
                     {{ $items->withQueryString()->links('nebula::components.pagination') }}
                 </footer>
 
