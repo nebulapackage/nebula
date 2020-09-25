@@ -12,7 +12,7 @@ class SelectField extends NebulaField
      * Sets the select fields's options properties.
      *
      * @param array $options
-     * @return SelectField
+     * @return $this
      */
     public function options(array $options): self
     {
