@@ -12,6 +12,11 @@ abstract class NebulaResource
 
     protected $searchable = [];
 
+    public function with()
+    {
+        return $this->with;
+    }
+
     public function searchable()
     {
         return $this->searchable;

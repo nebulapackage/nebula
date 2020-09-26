@@ -1,9 +1,5 @@
 @props(['field', 'item' => null])
 
-@php
-dd(Address::all())
-@endphp
-
 <x-nebula::form-row :field="$field">
 
     <p class="text-sm">

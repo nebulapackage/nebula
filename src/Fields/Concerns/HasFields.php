@@ -6,6 +6,11 @@ trait HasFields
 {
     protected array $fields;
 
+    /**
+     *
+     * @param mixed $fields
+     * @return self
+     */
     public function fields($fields): self
     {
         $this->fields = $fields;

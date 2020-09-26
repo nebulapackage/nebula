@@ -38,7 +38,7 @@ abstract class NebulaField
      * Set the name.
      *
      * @param string $name
-     * @return NebulaField
+     * @return self
      */
     public function name(string $name): self
     {

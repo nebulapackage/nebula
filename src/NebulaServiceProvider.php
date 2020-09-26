@@ -17,9 +17,9 @@ class NebulaServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        $this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang', 'nebula');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'nebula');
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        $this->loadJsonTranslationsFrom(__DIR__ . '/../resources/lang', 'nebula');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'nebula');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
         $this->loadViewComponentsAs('nebula', []);
 
         $this->mapWebRoutes();
@@ -30,11 +30,11 @@ class NebulaServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/nebula.php' => config_path('nebula.php'),
+                __DIR__ . '/../config/nebula.php' => config_path('nebula.php'),
             ], 'config');
 
             $this->publishes([
-                __DIR__.'/../public' => public_path('vendor/nebula'),
+                __DIR__ . '/../public' => public_path('vendor/nebula'),
             ], 'public');
 
             $this->commands([
@@ -50,7 +50,7 @@ class NebulaServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/nebula.php', 'nebula');
+        $this->mergeConfigFrom(__DIR__ . '/../config/nebula.php', 'nebula');
     }
 
     public function mapWebRoutes(): void
@@ -59,7 +59,7 @@ class NebulaServiceProvider extends ServiceProvider
             ->prefix(config('nebula.prefix'))
             ->domain(config('nebula.domain', null))
             ->name('nebula.')
-            ->group(__DIR__.'/../routes/web.php');
+            ->group(__DIR__ . '/../routes/web.php');
     }
 
     public function resourceResolver(): void
@@ -114,6 +114,7 @@ class NebulaServiceProvider extends ServiceProvider
             return request()
                 ->resource
                 ->model()::withoutGlobalScopes()
+                ->with(request()->resource->with())
                 ->findOrFail($value);
         });
     }
