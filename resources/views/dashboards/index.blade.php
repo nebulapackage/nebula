@@ -1,4 +1,4 @@
-<x-nebula::layouts.shell :title="__(':Dashboard dashboard', ['dashboard' => $dashboard->singularName()])">
+<x-nebula::layouts.shell :title="__(':Dashboard dashboard', ['dashboard' => $dashboard->singularName()])" :resources="$resources">
 
     <div class="mb-8 space-y-4">
 

@@ -12,9 +12,12 @@ use Larsklopstra\Nebula\Console\Commands\MakeFieldCommand;
 use Larsklopstra\Nebula\Console\Commands\MakeFilterCommand;
 use Larsklopstra\Nebula\Console\Commands\MakeResourceCommand;
 use Larsklopstra\Nebula\Console\Commands\MakeValueMetricCommand;
+use Larsklopstra\Nebula\Traits\LoadResources;
 
 class NebulaServiceProvider extends ServiceProvider
 {
+    use LoadResources;
+
     public function boot(): void
     {
         $this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang', 'nebula');
@@ -70,7 +73,7 @@ class NebulaServiceProvider extends ServiceProvider
     public function resourceResolver(): void
     {
         Route::bind('resource', function ($value) {
-            $resources = config('nebula.resources');
+            $resources = $this->LoadResources();
 
             if (empty($resources)) {
                 throw new Exception('No resources set in the nebula config.');

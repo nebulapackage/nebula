@@ -5,11 +5,12 @@ namespace Larsklopstra\Nebula\Http\Controllers;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\View\View;
 use Larsklopstra\Nebula\Contracts\NebulaDashboard;
+use Larsklopstra\Nebula\Traits\LoadResources;
 use Larsklopstra\Nebula\Traits\Toasts;
 
 class DashboardController
 {
-    use Toasts;
+    use LoadResources, Toasts;
 
     /**
      * Renders the dashboard view with metrics.
@@ -22,6 +23,7 @@ class DashboardController
     {
         return view('nebula::dashboards.index', [
             'dashboard' => $dashboard,
+            'resources' => $this->LoadResources(),
         ]);
     }
 }

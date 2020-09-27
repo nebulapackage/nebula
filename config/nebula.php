@@ -20,9 +20,7 @@ return [
         // 'admin@example.com',
     ],
 
-    'resources' => [
-        // new UserResource,
-    ],
+    'resources' => 'app/Nebula/Resources',
 
     'dashboards' => [
         // new UserDashboard,

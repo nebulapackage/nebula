@@ -1,4 +1,4 @@
-@props(['title' => config('nebula.name'), 'actions' => null, 'contextMenu' => null, 'back' => false])
+@props(['title' => config('nebula.name'), 'actions' => null, 'contextMenu' => null, 'back' => false, 'resources' => []])
 
 <x-nebula::layouts.app>
 
@@ -50,7 +50,7 @@
                         </p>
                     </li>
 
-                    @foreach (config('nebula.resources') as $resource)
+                    @foreach ($resources as $resource)
                         <li>
                             <a class="flex items-center h-10 px-2 text-sm font-medium text-gray-300 capitalize rounded-lg"
                                 href="{{ route('nebula.resources.index', $resource->name()) }}">
@@ -102,7 +102,7 @@
                     </p>
                 </li>
 
-                @foreach (config('nebula.resources') as $resource)
+                @foreach ($resources as $resource)
                     <li>
                         <a class="flex items-center h-10 px-2 text-sm font-medium text-gray-300 capitalize rounded-lg"
                             href="{{ route('nebula.resources.index', $resource->name()) }}">

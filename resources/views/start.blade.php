@@ -1,4 +1,4 @@
-<x-nebula::layouts.shell :title="__('Get started')">
+<x-nebula::layouts.shell :title="__('Get started')" :resources="$resources">
 
     <div class="space-y-8">
 

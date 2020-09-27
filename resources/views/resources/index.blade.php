@@ -1,4 +1,4 @@
-<x-nebula::layouts.shell :title="__(':Resources overview', ['resources' => $resource->pluralName()])">
+<x-nebula::layouts.shell :title="__(':Resources overview', ['resources' => $resource->pluralName()])" :resources="$resources">
 
     <x-slot name="actions">
 

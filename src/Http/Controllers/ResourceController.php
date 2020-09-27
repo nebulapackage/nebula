@@ -8,12 +8,13 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Larsklopstra\Nebula\Contracts\NebulaResource;
+use Larsklopstra\Nebula\Traits\LoadResources;
 use Larsklopstra\Nebula\Traits\Toasts;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
 class ResourceController
 {
-    use Toasts;
+    use LoadResources, Toasts;
 
     /**
      * Returns the index view with metrics, search filters and resource entries.
@@ -46,6 +47,7 @@ class ResourceController
             'resource' => $resource,
             'activeFilter' => $filter,
             'activeSearch' => $search,
+            'resources' => $this->LoadResources(),
         ]);
     }
 
