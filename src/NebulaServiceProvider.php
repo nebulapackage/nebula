@@ -19,6 +19,7 @@ class NebulaServiceProvider extends ServiceProvider
     {
         $this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang', 'nebula');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'nebula');
+        $this->loadViewsFrom(resource_path('views/vendor/nebula'), 'nebula');
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         $this->loadViewComponentsAs('nebula', []);
 
@@ -36,6 +37,10 @@ class NebulaServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../public' => public_path('vendor/nebula'),
             ], 'public');
+
+            $this->publishes([
+                __DIR__.'/../resources/views' => resource_path('views/vendor/nebula'),
+            ], 'views');
 
             $this->commands([
                 InstallCommand::class,
