@@ -42,7 +42,7 @@
 
     </x-slot>
 
-    @empty(!$resource->metrics())
+    @empty(! $metrics = $resource->metrics())
         <div class="mb-8 space-y-4">
 
             <h2 class="text-base font-medium font-display">
