@@ -3,18 +3,12 @@
 namespace Larsklopstra\Nebula\Tests;
 
 use Larsklopstra\Nebula\NebulaServiceProvider;
-use Orchestra\Testbench\TestCase;
+use Orchestra\Testbench\TestCase as BaseTestCase;
 
-class ExampleTest extends TestCase
+class TestCase extends BaseTestCase
 {
     protected function getPackageProviders($app)
     {
         return [NebulaServiceProvider::class];
-    }
-
-    /** @test */
-    public function true_is_true()
-    {
-        $this->assertTrue(true);
     }
 }
