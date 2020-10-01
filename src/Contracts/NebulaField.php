@@ -17,21 +17,24 @@ abstract class NebulaField
      * Construct the field.
      *
      * @param string $name
+     * @param string $column
      */
-    public function __construct(string $name)
+    public function __construct(string $name, string $column = null)
     {
         $this->name($name);
+        $this->label($column ??= $name);
     }
 
     /**
      * Make a field.
      *
      * @param string $name
+     * @param string $column
      * @return $this
      */
-    public static function make(string $name): self
+    public static function make(string $name, string $column = null): self
     {
-        return new static($name);
+        return new static($name, $column);
     }
 
     /**
@@ -44,11 +47,6 @@ abstract class NebulaField
     {
         $this->name = $name;
 
-        $this->label = Str::of($name)
-            ->replace('_', ' ')
-            ->lower()
-            ->ucfirst();
-
         return $this;
     }
 
@@ -60,7 +58,10 @@ abstract class NebulaField
      */
     public function label($label): self
     {
-        $this->label = $label;
+        $this->label = Str::of($label)
+            ->replace('_', ' ')
+            ->lower()
+            ->ucfirst();
 
         return $this;
     }
@@ -120,6 +121,11 @@ abstract class NebulaField
         return $this->name;
     }
 
+    /**
+     * Get the label.
+     *
+     * @return string
+     */
     public function getLabel()
     {
         return $this->label;
