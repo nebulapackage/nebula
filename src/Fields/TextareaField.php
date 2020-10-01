@@ -8,7 +8,5 @@ use Larsklopstra\Nebula\Fields\Concerns\HasPlaceholder;
 
 class TextareaField extends NebulaField
 {
-    use HasHelperText;
-
-    use HasPlaceholder;
+    use HasPlaceholder, HasHelperText;
 }
