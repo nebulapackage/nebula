@@ -27,7 +27,7 @@ abstract class NebulaField
      * Make a field.
      *
      * @param string $name
-     * @return NebulaField
+     * @return $this
      */
     public static function make(string $name): self
     {
@@ -38,7 +38,7 @@ abstract class NebulaField
      * Set the name.
      *
      * @param string $name
-     * @return NebulaField
+     * @return $this
      */
     public function name(string $name): self
     {
@@ -56,7 +56,7 @@ abstract class NebulaField
      * Set the label.
      *
      * @param mixed $label
-     * @return NebulaField
+     * @return $this
      */
     public function label($label): self
     {
@@ -69,7 +69,7 @@ abstract class NebulaField
      * Set the value.
      *
      * @param mixed $value
-     * @return NebulaField
+     * @return $this
      */
     public function value($value): self
     {
