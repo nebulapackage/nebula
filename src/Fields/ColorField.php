@@ -22,7 +22,7 @@ class ColorField extends NebulaField
      * Sets the colors.
      *
      * @param array $colors
-     * @return ColorField
+     * @return $this
      */
     public function colors(array $colors): self
     {

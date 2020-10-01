@@ -3,11 +3,12 @@
 namespace Larsklopstra\Nebula\Fields;
 
 use Larsklopstra\Nebula\Contracts\NebulaField;
+use Larsklopstra\Nebula\Fields\Concerns\HasHelperText;
 use Larsklopstra\Nebula\Fields\Concerns\HasPlaceholder;
 
 class InputField extends NebulaField
 {
-    use HasPlaceholder;
+    use HasPlaceholder, HasHelperText;
 
     protected string $type = 'text';
 
@@ -15,7 +16,7 @@ class InputField extends NebulaField
      * Sets the HTML input type.
      *
      * @param mixed $type
-     * @return InputField
+     * @return $this
      */
     public function type($type): self
     {

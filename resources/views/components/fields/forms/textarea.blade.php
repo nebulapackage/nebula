@@ -9,7 +9,8 @@
             id="{{ $field->getName() }}"
             name="{{ $field->getName() }}">{{ old($field->getName()) ?? (Arr::get($item, $field->getName()) ?? $field->getValue()) }}</textarea>
 
-        <x-nebula::error :for="$field->getName()" />
+        <x-nebula::error :for="$field" />
+        <x-nebula::helper-text :for="$field" />
 
     </div>
 

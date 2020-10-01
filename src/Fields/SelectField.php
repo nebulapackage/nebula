@@ -3,9 +3,12 @@
 namespace Larsklopstra\Nebula\Fields;
 
 use Larsklopstra\Nebula\Contracts\NebulaField;
+use Larsklopstra\Nebula\Fields\Concerns\HasHelperText;
 
 class SelectField extends NebulaField
 {
+    use HasHelperText;
+
     protected array $options = [];
 
     /**

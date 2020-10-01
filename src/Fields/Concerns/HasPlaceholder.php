@@ -10,7 +10,7 @@ trait HasPlaceholder
      * Sets the placeholder property.
      *
      * @param string $placeholder
-     * @return HasPlaceholder
+     * @return $this
      */
     public function placeholder(string $placeholder): self
     {

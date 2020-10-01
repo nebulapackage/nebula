@@ -21,7 +21,8 @@
 
         </select>
 
-        <x-nebula::error :for="$field->getName()" />
+        <x-nebula::error :for="$field" />
+        <x-nebula::helper-text :for="$field" />
 
     </div>
 

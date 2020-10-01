@@ -10,7 +10,7 @@
             {{ old($field->getName()) ?? (Arr::get($item, $field->getName()) ?? $field->getValue()) ? 'checked' : '' }}
             name="{{ $field->getName() }}" type="checkbox">
 
-        <x-nebula::error :for="$field->getName()" />
+        <x-nebula::error :for="$field" />
 
     </div>
 

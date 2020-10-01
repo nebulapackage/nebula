@@ -10,7 +10,7 @@ class BooleanField extends NebulaField
     protected string $false = 'False';
 
     /**
-     * Set the true label
+     * Set the true label.
      *
      * @param string $label
      * @return $this
@@ -23,7 +23,7 @@ class BooleanField extends NebulaField
     }
 
     /**
-     * Set the false label
+     * Set the false label.
      *
      * @param string $label
      * @return $this

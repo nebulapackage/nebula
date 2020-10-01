@@ -14,7 +14,7 @@
             @endforeach
         </div>
 
-        <x-nebula::error :for="$field->getName()" />
+        <x-nebula::error :for="$field" />
 
     </div>
 
