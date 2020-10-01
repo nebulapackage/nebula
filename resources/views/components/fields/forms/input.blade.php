@@ -9,7 +9,8 @@
             value="{{ old($field->getName()) ?? (Arr::get($item, $field->getName()) ?? $field->getValue()) }}"
             {{ $field->getRequired() ? 'required' : '' }} name="{{ $field->getName() }}" type="{{ $field->getType() }}">
 
-        <x-nebula::error :for="$field->getName()" />
+        <x-nebula::error :for="$field" />
+        <x-nebula::helper-text :for="$field" />
 
     </div>
 

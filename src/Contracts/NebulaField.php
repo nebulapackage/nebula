@@ -82,7 +82,7 @@ abstract class NebulaField
      * Set the required property.
      *
      * @param bool $required
-     * @return NebulaField
+     * @return $this
      */
     public function required(bool $required = true): self
     {
@@ -95,7 +95,7 @@ abstract class NebulaField
      * Set the rules.
      *
      * @param mixed $rules
-     * @return NebulaField
+     * @return $this
      */
     public function rules($rules): self
     {

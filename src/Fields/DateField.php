@@ -5,9 +5,12 @@ namespace Larsklopstra\Nebula\Fields;
 use Carbon\Carbon;
 use Carbon\Exceptions\InvalidFormatException;
 use Larsklopstra\Nebula\Contracts\NebulaField;
+use Larsklopstra\Nebula\Fields\Concerns\HasHelperText;
 
 class DateField extends NebulaField
 {
+    use HasHelperText;
+
     protected string $format = 'Y-m-d';
 
     /**
@@ -26,7 +29,7 @@ class DateField extends NebulaField
      * Applies the date format in the front-end.
      *
      * @param string $format
-     * @return DateField
+     * @return $this
      */
     public function format(string $format): self
     {
