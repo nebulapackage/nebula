@@ -5,11 +5,12 @@ namespace Larsklopstra\Nebula\Http\Controllers;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\View\View;
 use Larsklopstra\Nebula\Contracts\NebulaDashboard;
+use Larsklopstra\Nebula\Http\Concerns\AuthorizesRequests;
 use Larsklopstra\Nebula\Traits\Toasts;
 
 class DashboardController
 {
-    use Toasts;
+    use Toasts, AuthorizesRequests;
 
     /**
      * Renders the dashboard view with metrics.

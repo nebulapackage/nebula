@@ -8,12 +8,13 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Larsklopstra\Nebula\Contracts\NebulaResource;
+use Larsklopstra\Nebula\Http\Concerns\AuthorizesRequests;
 use Larsklopstra\Nebula\Traits\Toasts;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
 class ResourceController
 {
-    use Toasts;
+    use Toasts, AuthorizesRequests;
 
     /**
      * Returns the index view with metrics, search filters and resource entries.
@@ -26,6 +27,8 @@ class ResourceController
      */
     public function index(Request $request, NebulaResource $resource): View
     {
+        $this->authorize('viewAny', $resource->model());
+
         $filter = $request->query('filter');
         $search = $request->query('search');
 
@@ -59,6 +62,8 @@ class ResourceController
      */
     public function show(NebulaResource $resource, $item): View
     {
+        $this->authorize('view', $item);
+
         return view('nebula::resources.show', [
             'resource' => $resource,
             'item' => $item,
@@ -75,6 +80,8 @@ class ResourceController
      */
     public function edit(NebulaResource $resource, $item): View
     {
+        $this->authorize('update', $item);
+
         return view('nebula::resources.edit', [
             'resource' => $resource,
             'item' => $item,
@@ -92,6 +99,8 @@ class ResourceController
      */
     public function update(Request $request, NebulaResource $resource, $item): RedirectResponse
     {
+        $this->authorize('update', $item);
+
         $validated = $request->validate($resource->rules(
             $resource->editFields()
         ));
@@ -114,6 +123,8 @@ class ResourceController
      */
     public function create(NebulaResource $resource): View
     {
+        $this->authorize('create', $resource->model());
+
         return view('nebula::resources.create', [
             'resource' => $resource,
         ]);
@@ -130,6 +141,8 @@ class ResourceController
      */
     public function store(Request $request, NebulaResource $resource): RedirectResponse
     {
+        $this->authorize('create', $resource->model());
+
         $validated = $request->validate($resource->rules(
             $resource->createFields()
         ));
@@ -154,6 +167,8 @@ class ResourceController
      */
     public function destroy(NebulaResource $resource, $item): RedirectResponse
     {
+        $this->authorize('delete', $item);
+
         $resource->destroyQuery($item);
 
         $this->toast(__(':Resource deleted', [
