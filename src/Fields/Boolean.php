@@ -4,7 +4,7 @@ namespace Larsklopstra\Nebula\Fields;
 
 use Larsklopstra\Nebula\Contracts\NebulaField;
 
-class BooleanField extends NebulaField
+class Boolean extends NebulaField
 {
     protected string $true = 'True';
     protected string $false = 'False';
