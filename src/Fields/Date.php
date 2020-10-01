@@ -7,7 +7,7 @@ use Carbon\Exceptions\InvalidFormatException;
 use Larsklopstra\Nebula\Contracts\NebulaField;
 use Larsklopstra\Nebula\Fields\Concerns\HasHelperText;
 
-class DateField extends NebulaField
+class Date extends NebulaField
 {
     use HasHelperText;
 
