@@ -17,24 +17,24 @@ abstract class NebulaField
      * Construct the field.
      *
      * @param string $name
-     * @param string $column
+     * @param string $label
      */
-    public function __construct(string $name, string $column = null)
+    public function __construct(string $name, string $label = null)
     {
         $this->name($name);
-        $this->label($column ??= $name);
+        $this->label($label ??= $name);
     }
 
     /**
      * Make a field.
      *
      * @param string $name
-     * @param string $column
+     * @param string $label
      * @return $this
      */
-    public static function make(string $name, string $column = null): self
+    public static function make(string $name, string $label = null): self
     {
-        return new static($name, $column);
+        return new static($name, $label);
     }
 
     /**
