@@ -107,7 +107,7 @@
 
                                     @foreach ($resource->indexFields() as $field)
                                         <td class="p-4 text-sm border-t border-gray-200">
-                                            <a href="{{ route('nebula.resources.show', [$resource->name(), $item->id]) }}">
+                                            <a href="{{ route('nebula.resources.show', [$resource->name(), $item]) }}">
                                                 <x-dynamic-component :item="$item" :component="$field->getTableComponent()"
                                                     :field="$field" />
                                             </a>
