@@ -111,10 +111,11 @@ class NebulaServiceProvider extends ServiceProvider
     public function itemResolver(): void
     {
         Route::bind('item', function ($value) {
-            return request()
-                ->resource
-                ->model()::withoutGlobalScopes()
-                ->findOrFail($value);
+            $model = request()->resource->model();
+
+            return $model::withoutGlobalScopes()
+                ->where((new $model)->getRouteKeyName(), $value)
+                ->firstOrFail();
         });
     }
 }
