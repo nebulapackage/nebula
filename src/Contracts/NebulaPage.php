@@ -26,32 +26,17 @@ abstract class NebulaPage
     public function name()
     {
         return Str::of(class_basename($this))
-            ->replaceLast('Page', '')
-            ->kebab()
-            ->lower()
-            ->plural();
+            ->replaceLast('Page', '');
     }
 
     /**
-     * Returns the page singular name.
+     * Returns the slug of the page.
      *
      * @return Stringable
      */
-    public function singularName()
+    public function slug()
     {
-        return Str::of($this->name())
-            ->replace('-', '')
-            ->singular();
-    }
-
-    /**
-     * Returns the page its plural name.
-     *
-     * @return string
-     */
-    public function pluralName()
-    {
-        return Str::plural($this->singularName());
+        return $this->name()->kebab()->lower();
     }
 
     /**

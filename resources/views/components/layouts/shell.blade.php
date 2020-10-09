@@ -149,9 +149,9 @@
                     <li>
 
                         <a class="flex items-center h-10 px-2 text-sm font-medium text-gray-300 capitalize rounded-lg"
-                            href="{{ route('nebula.pages.index', $page->name()) }}">
+                            href="{{ route('nebula.pages.index', $page->slug()) }}">
                             {{ svg("heroicon-o-{$page->icon()}", ['class' => 'w-5 h-5 mr-2 text-gray-400']) }}
-                            {{ $page->pluralName() }}
+                            {{ $page->name() }}
                         </a>
 
                     </li>

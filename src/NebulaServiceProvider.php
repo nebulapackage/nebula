@@ -10,6 +10,7 @@ use Larsklopstra\Nebula\Console\Commands\InstallCommand;
 use Larsklopstra\Nebula\Console\Commands\MakeDashboardCommand;
 use Larsklopstra\Nebula\Console\Commands\MakeFieldCommand;
 use Larsklopstra\Nebula\Console\Commands\MakeFilterCommand;
+use Larsklopstra\Nebula\Console\Commands\MakePageCommand;
 use Larsklopstra\Nebula\Console\Commands\MakeResourceCommand;
 use Larsklopstra\Nebula\Console\Commands\MakeValueMetricCommand;
 
@@ -45,6 +46,7 @@ class NebulaServiceProvider extends ServiceProvider
                 MakeDashboardCommand::class,
                 MakeFilterCommand::class,
                 MakeFieldCommand::class,
+                MakePageCommand::class,
             ]);
         }
     }
@@ -130,7 +132,7 @@ class NebulaServiceProvider extends ServiceProvider
             }
 
             foreach ($pages as $page) {
-                $pageExists = Str::of($page->name())
+                $pageExists = Str::of($page->slug())
                     ->lower()
                     ->is($value);
 

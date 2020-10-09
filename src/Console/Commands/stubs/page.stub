@@ -1,0 +1,18 @@
+<?php
+
+namespace DummyNamespace;
+
+use Larsklopstra\Nebula\Contracts\NebulaPage;
+
+class DummyClass extends NebulaPage
+{
+    public function icon()
+    {
+        return 'document';
+    }
+
+    public function render()
+    {
+        return view('nebula.pages.dummy-view');
+    }
+}
