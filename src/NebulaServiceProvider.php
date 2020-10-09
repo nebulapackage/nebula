@@ -68,7 +68,7 @@ class NebulaServiceProvider extends ServiceProvider
     public function resourceResolver(): void
     {
         Route::bind('resource', function ($value) {
-            $resources = config('nebula.resources');
+            $resources = Nebula::availableResources();
 
             if (empty($resources)) {
                 throw new Exception('No resources set in the nebula config.');
@@ -91,7 +91,7 @@ class NebulaServiceProvider extends ServiceProvider
     public function dashboardResolver(): void
     {
         Route::bind('dashboard', function ($value) {
-            $dashboards = config('nebula.dashboards');
+            $dashboards = Nebula::availableDashboards();
 
             if (empty($dashboards)) {
                 throw new Exception('No dashboards set in the nebula config.');
@@ -125,7 +125,7 @@ class NebulaServiceProvider extends ServiceProvider
     public function pageResolver(): void
     {
         Route::bind('page', function ($value) {
-            $pages = config('nebula.pages', []);
+            $pages = Nebula::availablePages();
 
             if (empty($pages)) {
                 throw new Exception('No pages set in the nebula config.');
