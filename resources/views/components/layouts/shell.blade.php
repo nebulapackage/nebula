@@ -18,7 +18,7 @@
             </header>
 
             <nav x-show.transition.opacity="menuOpen" class="border-t border-gray-700">
-                @if ($dashboards = config('nebula.dashboards'))
+                @if ($dashboards = \Larsklopstra\Nebula\Nebula::availableDashboards())
                     <ul class="px-2 my-4 space-y-1">
 
                         <li>
@@ -50,7 +50,7 @@
                         </p>
                     </li>
 
-                    @foreach (config('nebula.resources') as $resource)
+                    @foreach (\Larsklopstra\Nebula\Nebula::availableResources() as $resource)
                         <li>
                             <a class="flex items-center h-10 px-2 text-sm font-medium text-gray-300 capitalize rounded-lg"
                                 href="{{ route('nebula.resources.index', $resource->name()) }}">
@@ -62,7 +62,7 @@
 
                 </ul>
 
-                @if($pages = config('nebula.pages'))
+                @if($pages = \Larsklopstra\Nebula\Nebula::availablePages())
                     <ul class="px-2 my-4 space-y-1">
 
                         <li>
@@ -92,7 +92,7 @@
                 <p class="w-full text-base font-medium truncate font-display">{{ config('nebula.name') }}</p>
             </header>
 
-            @if ($dashboards = config('nebula.dashboards'))
+            @if ($dashboards = \Larsklopstra\Nebula\Nebula::availableDashboards())
                 <ul class="px-2 my-4 space-y-1">
 
                     <li>
@@ -124,7 +124,7 @@
                     </p>
                 </li>
 
-                @foreach (config('nebula.resources') as $resource)
+                @foreach (\Larsklopstra\Nebula\Nebula::availableResources() as $resource)
                     <li>
                         <a class="flex items-center h-10 px-2 text-sm font-medium text-gray-300 capitalize rounded-lg"
                             href="{{ route('nebula.resources.index', $resource->name()) }}">
@@ -136,7 +136,7 @@
 
             </ul>
 
-            @if ($pages = config('nebula.pages'))
+            @if ($pages = \Larsklopstra\Nebula\Nebula::availablePages())
                 <ul class="px-2 my-4 space-y-1">
 
                     <li>
