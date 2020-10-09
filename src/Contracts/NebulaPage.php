@@ -2,12 +2,15 @@
 
 namespace Larsklopstra\Nebula\Contracts;
 
+use Closure;
 use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
 
 abstract class NebulaPage
 {
+    public Closure $canSeeCallback;
+
     /**
      * Specifies which icon should be used.
      *
@@ -42,7 +45,7 @@ abstract class NebulaPage
     /**
      * Outputs the page.
      *
-     * @return
+     * @return mixed
      */
     public function display()
     {
@@ -51,5 +54,18 @@ abstract class NebulaPage
         }
 
         return app()->call([$this, 'render']);
+    }
+
+    /**
+     * Determine whether or not the page can be accessed.
+     *
+     * @param  \Closure  $callback
+     * @return static
+     */
+    public function canSee(Closure $callback)
+    {
+        $this->canSeeCallback = $callback;
+
+        return $this;
     }
 }
