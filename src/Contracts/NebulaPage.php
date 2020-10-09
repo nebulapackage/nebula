@@ -9,7 +9,7 @@ use Illuminate\Support\Stringable;
 
 abstract class NebulaPage
 {
-    public Closure $canSeeCallback;
+    public $canSeeCallback;
 
     /**
      * Specifies which icon should be used.
