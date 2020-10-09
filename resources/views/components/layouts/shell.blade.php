@@ -137,28 +137,28 @@
             </ul>
 
             @if ($pages = config('nebula.pages'))
-            <ul class="px-2 my-4 space-y-1">
+                <ul class="px-2 my-4 space-y-1">
 
-                <li>
-                    <p class="flex items-center h-8 px-2 text-xs font-medium text-gray-300 uppercase">
-                        {{ __('Pages') }}
-                    </p>
-                </li>
-
-                @foreach ($pages as $page)
                     <li>
-
-                        <a class="flex items-center h-10 px-2 text-sm font-medium text-gray-300 capitalize rounded-lg"
-                            href="{{ route('nebula.pages.index', $page->slug()) }}">
-                            {{ svg("heroicon-o-{$page->icon()}", ['class' => 'w-5 h-5 mr-2 text-gray-400']) }}
-                            {{ $page->name() }}
-                        </a>
-
+                        <p class="flex items-center h-8 px-2 text-xs font-medium text-gray-300 uppercase">
+                            {{ __('Pages') }}
+                        </p>
                     </li>
-                @endforeach
 
-            </ul>
-        @endif
+                    @foreach ($pages as $page)
+                        <li>
+
+                            <a class="flex items-center h-10 px-2 text-sm font-medium text-gray-300 capitalize rounded-lg"
+                                href="{{ route('nebula.pages.index', $page->slug()) }}">
+                                {{ svg("heroicon-o-{$page->icon()}", ['class' => 'w-5 h-5 mr-2 text-gray-400']) }}
+                                {{ $page->name() }}
+                            </a>
+
+                        </li>
+                    @endforeach
+
+                </ul>
+            @endif
 
         </aside>
 
