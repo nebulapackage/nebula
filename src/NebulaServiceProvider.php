@@ -10,6 +10,7 @@ use Larsklopstra\Nebula\Console\Commands\InstallCommand;
 use Larsklopstra\Nebula\Console\Commands\MakeDashboardCommand;
 use Larsklopstra\Nebula\Console\Commands\MakeFieldCommand;
 use Larsklopstra\Nebula\Console\Commands\MakeFilterCommand;
+use Larsklopstra\Nebula\Console\Commands\MakePageCommand;
 use Larsklopstra\Nebula\Console\Commands\MakeResourceCommand;
 use Larsklopstra\Nebula\Console\Commands\MakeValueMetricCommand;
 
@@ -27,6 +28,7 @@ class NebulaServiceProvider extends ServiceProvider
         $this->resourceResolver();
         $this->itemResolver();
         $this->dashboardResolver();
+        $this->pageResolver();
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -44,6 +46,7 @@ class NebulaServiceProvider extends ServiceProvider
                 MakeDashboardCommand::class,
                 MakeFilterCommand::class,
                 MakeFieldCommand::class,
+                MakePageCommand::class,
             ]);
         }
     }
@@ -116,6 +119,29 @@ class NebulaServiceProvider extends ServiceProvider
             return $model::withoutGlobalScopes()
                 ->where((new $model)->getRouteKeyName(), $value)
                 ->firstOrFail();
+        });
+    }
+
+    public function pageResolver(): void
+    {
+        Route::bind('page', function ($value) {
+            $pages = config('nebula.pages', []);
+
+            if (empty($pages)) {
+                throw new Exception('No pages set in the nebula config.');
+            }
+
+            foreach ($pages as $page) {
+                $pageExists = Str::of($page->slug())
+                    ->lower()
+                    ->is($value);
+
+                if ($pageExists) {
+                    return $page;
+                }
+            }
+
+            throw new Exception("Page {$page} not found.");
         });
     }
 }

@@ -28,4 +28,8 @@ return [
         // new UserDashboard,
     ],
 
+    'pages' => [
+        // new CustomPage,
+    ],
+
 ];

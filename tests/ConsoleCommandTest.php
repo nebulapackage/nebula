@@ -94,4 +94,20 @@ final class ConsoleCommandTest extends TestCase
 
         $this->artisan('nebula:value');
     }
+
+    /** @test can run php artisan nebula:page */
+    public function can_run_artisan_nebula_page()
+    {
+        $command = $this->artisan('nebula:page', ['name' => 'ExamplePage']);
+
+        $command->assertExitCode(0);
+    }
+
+    /** @test cannot run php artisan nebula:page */
+    public function cannot_run_artisan_nebula_page_without_name()
+    {
+        $this->expectException(RuntimeException::class);
+
+        $this->artisan('nebula:page');
+    }
 }

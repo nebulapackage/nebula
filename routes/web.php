@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Larsklopstra\Nebula\Http\Controllers\DashboardController;
+use Larsklopstra\Nebula\Http\Controllers\PageController;
 use Larsklopstra\Nebula\Http\Controllers\ResourceController;
 use Larsklopstra\Nebula\Http\Controllers\StartController;
 
@@ -23,3 +24,5 @@ Route::name('resources.')->prefix('/resources')->group(function () {
 
     Route::delete('/{resource}/{item}', [ResourceController::class, 'destroy'])->name('destroy');
 });
+
+Route::get('/page/{page}', [PageController::class, 'index'])->name('pages.index');
