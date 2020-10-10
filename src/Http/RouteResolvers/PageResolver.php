@@ -17,7 +17,7 @@ class PageResolver
      * @throws HttpException
      * @throws NotFoundHttpException
      */
-    public function bind(): void
+    public static function bind(): void
     {
         Route::bind('page', function ($value) {
             $pages = Nebula::availablePages();
