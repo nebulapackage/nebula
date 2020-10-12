@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Larsklopstra\Nebula\Nebula;
 
-class PageResolver
+class PageResolver extends Resolver
 {
     /**
      * Binds the page routes to the list of routes.

@@ -5,8 +5,9 @@ namespace Larsklopstra\Nebula\Http\RouteResolvers;
 use Exception;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
+use Larsklopstra\Nebula\Nebula;
 
-class DashboardResolver
+class DashboardResolver extends Resolver
 {
     /**
      * Binds the "dashboard" route to the list of routes.
@@ -19,7 +20,7 @@ class DashboardResolver
     public static function bind(): void
     {
         Route::bind('dashboard', function ($value) {
-            $dashboards = config('nebula.dashboards');
+            $dashboards = Nebula::availableDashboards();
 
             if (empty($dashboards)) {
                 throw new Exception('No dashboards set in the nebula config.');

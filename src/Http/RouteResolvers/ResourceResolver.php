@@ -5,8 +5,9 @@ namespace Larsklopstra\Nebula\Http\RouteResolvers;
 use Exception;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
+use Larsklopstra\Nebula\Nebula;
 
-class ResourceResolver
+class ResourceResolver extends Resolver
 {
     /**
      * Binds a "resource" route to the list of routes.
@@ -19,7 +20,7 @@ class ResourceResolver
     public static function bind(): void
     {
         Route::bind('resource', function ($value) {
-            $resources = config('nebula.resources');
+            $resources = Nebula::availableResources();
 
             if (empty($resources)) {
                 throw new Exception('No resources set in the nebula config.');

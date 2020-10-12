@@ -4,7 +4,7 @@ namespace Larsklopstra\Nebula\Http\RouteResolvers;
 
 use Illuminate\Support\Facades\Route;
 
-class ItemResolver
+class ItemResolver extends Resolver
 {
     /**
      * Binds the "item" route to the list of routes.
