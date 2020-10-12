@@ -2,10 +2,8 @@
 
 namespace Larsklopstra\Nebula;
 
-use Exception;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
 use Larsklopstra\Nebula\Console\Commands\InstallCommand;
 use Larsklopstra\Nebula\Console\Commands\MakeDashboardCommand;
 use Larsklopstra\Nebula\Console\Commands\MakeFieldCommand;
@@ -13,6 +11,10 @@ use Larsklopstra\Nebula\Console\Commands\MakeFilterCommand;
 use Larsklopstra\Nebula\Console\Commands\MakePageCommand;
 use Larsklopstra\Nebula\Console\Commands\MakeResourceCommand;
 use Larsklopstra\Nebula\Console\Commands\MakeValueMetricCommand;
+use Larsklopstra\Nebula\Http\RouteResolvers\DashboardResolver;
+use Larsklopstra\Nebula\Http\RouteResolvers\ItemResolver;
+use Larsklopstra\Nebula\Http\RouteResolvers\PageResolver;
+use Larsklopstra\Nebula\Http\RouteResolvers\ResourceResolver;
 
 class NebulaServiceProvider extends ServiceProvider
 {
@@ -25,10 +27,10 @@ class NebulaServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        $this->resourceResolver();
-        $this->itemResolver();
-        $this->dashboardResolver();
-        $this->pageResolver();
+        ResourceResolver::bind();
+        ItemResolver::bind();
+        DashboardResolver::bind();
+        PageResolver::bind();
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -63,85 +65,5 @@ class NebulaServiceProvider extends ServiceProvider
             ->domain(config('nebula.domain', null))
             ->name('nebula.')
             ->group(__DIR__.'/../routes/web.php');
-    }
-
-    public function resourceResolver(): void
-    {
-        Route::bind('resource', function ($value) {
-            $resources = Nebula::availableResources();
-
-            if (empty($resources)) {
-                throw new Exception('No resources set in the nebula config.');
-            }
-
-            foreach ($resources as $resource) {
-                $resourceExists = Str::of($resource->name())
-                    ->lower()
-                    ->is($value);
-
-                if ($resourceExists) {
-                    return $resource;
-                }
-            }
-
-            throw new Exception("Resource $value not found.");
-        });
-    }
-
-    public function dashboardResolver(): void
-    {
-        Route::bind('dashboard', function ($value) {
-            $dashboards = Nebula::availableDashboards();
-
-            if (empty($dashboards)) {
-                throw new Exception('No dashboards set in the nebula config.');
-            }
-
-            foreach ($dashboards as $dashboard) {
-                $dashboardExists = Str::of($dashboard->name())
-                    ->lower()
-                    ->is($value);
-
-                if ($dashboardExists) {
-                    return $dashboard;
-                }
-            }
-
-            throw new Exception("Dashboard $value not found.");
-        });
-    }
-
-    public function itemResolver(): void
-    {
-        Route::bind('item', function ($value) {
-            $model = request()->resource->model();
-
-            return $model::withoutGlobalScopes()
-                ->where((new $model)->getRouteKeyName(), $value)
-                ->firstOrFail();
-        });
-    }
-
-    public function pageResolver(): void
-    {
-        Route::bind('page', function ($value) {
-            $pages = Nebula::availablePages();
-
-            if (empty($pages)) {
-                throw new Exception('No pages set in the nebula config.');
-            }
-
-            foreach ($pages as $page) {
-                $pageExists = Str::of($page->slug())
-                    ->lower()
-                    ->is($value);
-
-                if ($pageExists) {
-                    return $page;
-                }
-            }
-
-            throw new Exception("Page {$page} not found.");
-        });
     }
 }
