@@ -1,0 +1,29 @@
+{
+  "Resources": "Resourcen",
+  ":Resources overview": ":Resourcen Übersicht",
+  ":Resource details": ":Resource Details",
+  "Create :resource": ":Resource anlegen",
+  "Edit :resource": ":Resource bearbeiten",
+  "Update :resource": ":Resource speichern",
+  "Delete :resource": ":Resource löschen",
+  "Back to :resources": "Zurück zu :resources",
+
+  ":Resource created": ":Resource angelegt",
+  ":Resource updated": ":Resource gespeichert",
+  ":Resource deleted": ":Resource gelöscht",
+
+  "Expand :field": ":Field erweitern",
+  "Collapse :field": ":Field einklappen",
+
+  "Select filter": "Filter auswählen",
+  "Apply filters": "Filter anwenden",
+  "Remove filters": "Filter zurücksetzen",
+  "Search anything...": "Suchen...",
+  "Are you sure?": "Bist du sicher?",
+  "Last month": "Letzter Monat",
+
+  "No :resources found": "Keine :resources gefunden",
+  ":Resources you've created will show up here.": ":Resources die du angelegt hast werden hier angezeigt.",
+
+  ":count result | :count results": ":count Ergebnis | :count Ergebnisse"
+}
