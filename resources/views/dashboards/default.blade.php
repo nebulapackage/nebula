@@ -1,5 +1,5 @@
 <h2 class="text-base font-medium font-display">
-    {{ __('Last month') }}
+    {{ $dashboard->label() }}
 </h2>
 
 {{ $dashboard->displayMetrics() }}
