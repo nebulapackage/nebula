@@ -3,7 +3,7 @@
     <div class="mb-8 space-y-4">
 
         <h2 class="text-base font-medium font-display">
-            {{ __('Last month') }}
+            {{ $dashboard->label() }}
         </h2>
 
         <div class="grid grid-cols-12 gap-6">
