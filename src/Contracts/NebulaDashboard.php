@@ -66,11 +66,23 @@ abstract class NebulaDashboard
     /**
      * Render the view for the dashboard.
      *
-     * @return mixed
+     * @return \Illuminate\View\View|string
      */
     public function display()
     {
         return app()->call([$this, 'render']);
+    }
+
+    /**
+     * Render the metrics for the dashboard.
+     *
+     * @return \Illuminate\View\View|string
+     */
+    public function displayMetrics()
+    {
+        return view('nebula::dashboards.default-metrics', [
+            'dashboard' => $this,
+        ]);
     }
 
     /**
