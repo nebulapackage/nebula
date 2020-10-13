@@ -62,4 +62,14 @@ abstract class NebulaDashboard
     {
         return Str::plural($this->singularName());
     }
+
+    /**
+     * Returns the label for the dashboard.
+     *
+     * @return string
+     */
+    public function label()
+    {
+        return __('Last month');
+    }
 }
