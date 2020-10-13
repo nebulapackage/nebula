@@ -96,4 +96,14 @@ abstract class NebulaDashboard
             'dashboard' => $this,
         ]);
     }
+
+    /**
+     * Returns the label for the dashboard.
+     *
+     * @return string
+     */
+    public function label()
+    {
+        return __('Last month');
+    }
 }
