@@ -42,25 +42,27 @@
                     </ul>
                 @endif
 
-                <ul class="px-2 my-4 space-y-1">
+                @if($resources = \Larsklopstra\Nebula\Nebula::availableResources())
+                    <ul class="px-2 my-4 space-y-1">
 
-                    <li>
-                        <p class="flex items-center h-8 px-2 text-xs font-medium text-gray-300 uppercase">
-                            {{ __('Resources') }}
-                        </p>
-                    </li>
-
-                    @foreach (\Larsklopstra\Nebula\Nebula::availableResources() as $resource)
                         <li>
-                            <a class="flex items-center h-10 px-2 text-sm font-medium text-gray-300 capitalize rounded-lg"
-                                href="{{ route('nebula.resources.index', $resource->name()) }}">
-                                {{ svg("heroicon-o-{$resource->icon()}", ['class' => 'w-5 h-5 mr-2 text-gray-400']) }}
-                                {{ $resource->pluralName() }}
-                            </a>
+                            <p class="flex items-center h-8 px-2 text-xs font-medium text-gray-300 uppercase">
+                                {{ __('Resources') }}
+                            </p>
                         </li>
-                    @endforeach
 
-                </ul>
+                        @foreach ($resources as $resource)
+                            <li>
+                                <a class="flex items-center h-10 px-2 text-sm font-medium text-gray-300 capitalize rounded-lg"
+                                    href="{{ route('nebula.resources.index', $resource->name()) }}">
+                                    {{ svg("heroicon-o-{$resource->icon()}", ['class' => 'w-5 h-5 mr-2 text-gray-400']) }}
+                                    {{ $resource->pluralName() }}
+                                </a>
+                            </li>
+                        @endforeach
+
+                    </ul>
+                @endif
 
                 @if($pages = \Larsklopstra\Nebula\Nebula::availablePages())
                     <ul class="px-2 my-4 space-y-1">
@@ -116,25 +118,27 @@
                 </ul>
             @endif
 
-            <ul class="px-2 my-4 space-y-1">
+            @if($resources = \Larsklopstra\Nebula\Nebula::availableResources())
+                <ul class="px-2 my-4 space-y-1">
 
-                <li>
-                    <p class="flex items-center h-8 px-2 text-xs font-medium text-gray-300 uppercase">
-                        {{ __('Resources') }}
-                    </p>
-                </li>
-
-                @foreach (\Larsklopstra\Nebula\Nebula::availableResources() as $resource)
                     <li>
-                        <a class="flex items-center h-10 px-2 text-sm font-medium text-gray-300 capitalize rounded-lg"
-                            href="{{ route('nebula.resources.index', $resource->name()) }}">
-                            {{ svg("heroicon-o-{$resource->icon()}", ['class' => 'w-5 h-5 mr-2 text-gray-400']) }}
-                            {{ $resource->pluralName() }}
-                        </a>
+                        <p class="flex items-center h-8 px-2 text-xs font-medium text-gray-300 uppercase">
+                            {{ __('Resources') }}
+                        </p>
                     </li>
-                @endforeach
 
-            </ul>
+                    @foreach (\Larsklopstra\Nebula\Nebula::availableResources() as $resource)
+                        <li>
+                            <a class="flex items-center h-10 px-2 text-sm font-medium text-gray-300 capitalize rounded-lg"
+                                href="{{ route('nebula.resources.index', $resource->name()) }}">
+                                {{ svg("heroicon-o-{$resource->icon()}", ['class' => 'w-5 h-5 mr-2 text-gray-400']) }}
+                                {{ $resource->pluralName() }}
+                            </a>
+                        </li>
+                    @endforeach
+
+                </ul>
+            @endif
 
             @if ($pages = \Larsklopstra\Nebula\Nebula::availablePages())
                 <ul class="px-2 my-4 space-y-1">
