@@ -30,15 +30,11 @@ class BelongsTo extends NebulaField
         return $item->nebulaRelation()->pluck($resource->title())->first();
     }
 
-    public function resolveRelated($item)
+    public function resolveRelated()
     {
         $resource = (new $this->resource);
         $belongsToModel = $resource->model();
 
-        $item::resolveRelationUsing('nebulaRelation', function ($item) use ($belongsToModel) {
-            return $item->belongsTo($belongsToModel, $this->name);
-        });
-
-        return $item->nebulaRelation->pluck('id', $resource->title());
+        return $belongsToModel::pluck('id', $resource->title());
     }
 }

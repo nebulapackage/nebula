@@ -3,13 +3,12 @@
 <x-nebula::form-row :field="$field">
 
     <div class="space-y-2">
-
         <select class="block w-full max-w-lg border border-gray-300 rounded-lg shadow-sm form-select sm:text-sm"
             id="{{ $field->getName() }}" {{ $field->getRequired() ? 'required' : '' }} name="{{ $field->getName() }}">
 
             <option value="">Select an option</option>
 
-            @foreach ($field->resolveRelated($item) as $key => $value)
+            @foreach ($field->resolveRelated() as $key => $value)
                 <option
                     {{ (old($field->getName()) ?? (Arr::get($item, $field->getName()) ?? $field->getValue())) == $value ? 'selected' : '' }}
                     value="{{ $value }}">
