@@ -9,17 +9,19 @@
 
             <option value="">Select an option</option>
 
-                @foreach ($field->resolveRelated($item) as $key => $value)
-                    <option
-                        value="{{ $value }}">
-                        {{ $key }}
-                    </option>
-                @endforeach
+            @foreach ($field->resolveRelated($item) as $key => $value)
+                <option
+                    {{ (old($field->getName()) ?? (Arr::get($item, $field->getName()) ?? $field->getValue())) == $value ? 'selected' : '' }}
+                    value="{{ $value }}">
+                    {{ $key }}
+                </option>
+            @endforeach
 
         </select>
 
         <x-nebula::error :for="$field" />
-        {{-- <x-nebula::helper-text :for="$field" /> --}}
+        {{--
+        <x-nebula::helper-text :for="$field" /> --}}
 
     </div>
 
