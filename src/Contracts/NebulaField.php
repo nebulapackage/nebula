@@ -46,7 +46,7 @@ abstract class NebulaField
     public function name(string $name): self
     {
         $this->name = Str::of($name)
-            ->replace('_', ' ')
+            ->replace(' ', '_')
             ->lower();
 
         return $this;
