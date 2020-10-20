@@ -20,8 +20,7 @@
         </select>
 
         <x-nebula::error :for="$field" />
-        {{--
-        <x-nebula::helper-text :for="$field" /> --}}
+        <x-nebula::helper-text :for="$field" />
 
     </div>
 
