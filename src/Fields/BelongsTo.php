@@ -23,6 +23,6 @@ class BelongsTo extends NebulaField
     {
         $resource = $this->getResourceInstance();
 
-        return $resource->model()::pluck('id', $resource->title());
+        return $resource->model()->pluck('id', $resource->title());
     }
 }
