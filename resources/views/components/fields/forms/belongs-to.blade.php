@@ -8,7 +8,7 @@
 
             <option value="">Select an option</option>
 
-            @foreach ($field->resolveRelated() as $key => $value)
+            @foreach ($field->canBelongTo() as $key => $value)
                 <option
                     {{ (old($field->getName()) ?? (Arr::get($item, $field->getName()) ?? $field->getValue())) == $value ? 'selected' : '' }}
                     value="{{ $value }}">

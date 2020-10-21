@@ -10,19 +10,22 @@ class BelongsTo extends NebulaField
 {
     use HasHelperText, HasResource;
 
-    public function resolveBelongsTo($item)
+    public function resolveBelongsTo($item = null)
     {
+        $model = $item ?? request()->item;
         $resource = $this->getResourceInstance();
 
-        return $item
+        return $model
             ->belongsTo($resource->model(), $this->name)
             ->pluck($resource->title())->first();
     }
 
-    public function resolveRelated()
+    public function canBelongTo()
     {
         $resource = $this->getResourceInstance();
 
-        return $resource->model()->pluck('id', $resource->title());
+        return $resource
+            ->model()
+            ->pluck('id', $resource->title());
     }
 }

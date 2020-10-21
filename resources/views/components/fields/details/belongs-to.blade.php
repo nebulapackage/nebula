@@ -2,6 +2,6 @@
 
 <x-nebula::form-row :field="$field">
 
-    <p class="text-sm">{{ $field->resolveBelongsTo($item) }}</p>
+    <p class="text-sm">{{ $field->resolveBelongsTo() }}</p>
 
 </x-nebula::form-row>
