@@ -4,6 +4,7 @@ namespace Larsklopstra\Nebula\Contracts;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
+use Larsklopstra\Nebula\Fields\HasMany;
 
 abstract class NebulaField
 {
@@ -163,7 +164,7 @@ abstract class NebulaField
 
     public function shouldRender()
     {
-        return !($this instanceof \LarsKlopstra\Nebula\Fields\HasMany);
+        return !($this instanceof HasMany);
     }
 
     /**
