@@ -100,7 +100,7 @@ abstract class NebulaField
      */
     public function rules($rules): self
     {
-        if (! is_array($rules)) {
+        if (!is_array($rules)) {
             $this->rules = explode('|', $rules);
 
             return $this;
@@ -159,6 +159,11 @@ abstract class NebulaField
     public function getRules(): array
     {
         return $this->rules;
+    }
+
+    public function shouldRender()
+    {
+        return ($this instanceof \LarsKlopstra\Nebula\Fields\HasMany);
     }
 
     /**

@@ -4,37 +4,25 @@ namespace Larsklopstra\Nebula\Fields;
 
 use Larsklopstra\Nebula\Contracts\NebulaField;
 use Larsklopstra\Nebula\Fields\Concerns\HasHelperText;
+use Larsklopstra\Nebula\Fields\Concerns\HasResource;
 
 class BelongsTo extends NebulaField
 {
-    use HasHelperText;
-
-    protected $resource;
-
-    public function resource($resource)
-    {
-        $this->resource = $resource;
-
-        return $this;
-    }
+    use HasHelperText, HasResource;
 
     public function resolveBelongsTo($item)
     {
-        $resource = (new $this->resource);
-        $belongsToModel = $resource->model();
+        $resource = $this->getResourceInstance();
 
-        $item::resolveRelationUsing('nebulaRelation', function ($item) use ($belongsToModel) {
-            return $item->belongsTo($belongsToModel, $this->name);
-        });
-
-        return $item->nebulaRelation()->pluck($resource->title())->first();
+        return $item
+            ->belongsTo($resource->model(), $this->name)
+            ->pluck($resource->title())->first();
     }
 
     public function resolveRelated()
     {
-        $resource = (new $this->resource);
-        $belongsToModel = $resource->model();
+        $resource = $this->getResourceInstance();
 
-        return $belongsToModel::pluck('id', $resource->title());
+        return $resource->model()::pluck('id', $resource->title());
     }
 }
