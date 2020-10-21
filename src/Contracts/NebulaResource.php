@@ -22,6 +22,11 @@ abstract class NebulaResource
         return 'name';
     }
 
+    public function id()
+    {
+        return 'id';
+    }
+
     /**
      * Specifies the metrics which should be displayed.
      *

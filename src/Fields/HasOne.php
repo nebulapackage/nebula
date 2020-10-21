@@ -6,23 +6,24 @@ use Larsklopstra\Nebula\Contracts\NebulaField;
 use Larsklopstra\Nebula\Fields\Concerns\HasHelperText;
 use Larsklopstra\Nebula\Fields\Concerns\HasResource;
 
-class BelongsTo extends NebulaField
+class HasOne extends NebulaField
 {
     use HasHelperText, HasResource;
 
-    public function resolveBelongsTo($item = null)
+    public function resolveHasOne($item = null)
     {
         $model = $item ?? request()->item;
         $resource = $this->getResourceInstance();
 
         return $model
-            ->belongsTo($resource->model(), $this->name)
+            ->hasOne($resource->model(), $this->name)
             ->first()
             ->{$resource->title()};
     }
 
-    public function canBelongTo()
+    public function canHave()
     {
+        /** TODO: fix */
         $resource = $this->getResourceInstance();
         $model = $resource->model();
 
