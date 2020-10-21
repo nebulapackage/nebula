@@ -23,9 +23,8 @@ class BelongsTo extends NebulaField
     public function canBelongTo()
     {
         $resource = $this->getResourceInstance();
+        $model = $resource->model();
 
-        return $resource
-            ->model()
-            ->pluck('id', $resource->title());
+        return $model::pluck('id', $resource->title());
     }
 }
