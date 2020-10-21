@@ -163,7 +163,7 @@ abstract class NebulaField
 
     public function shouldRender()
     {
-        return ($this instanceof \LarsKlopstra\Nebula\Fields\HasMany);
+        return !($this instanceof \LarsKlopstra\Nebula\Fields\HasMany);
     }
 
     /**

@@ -11,9 +11,9 @@
                 </x-slot>
 
                 @foreach ($resource->createFields() as $field)
-                    @unless($field->shouldRender())
+                    @if($field->shouldRender())
                         <x-dynamic-component :component="$field->getFormComponent()" :field="$field" />
-                    @endunless
+                    @endif
                 @endforeach
 
                 <x-nebula::form-actions>
