@@ -42,7 +42,7 @@
 
     </x-slot>
 
-    @empty(!($metrics = $resource->metrics()))
+    @if($metrics = $resource->metrics())
         <div class="mb-8 space-y-4">
 
             <h2 class="text-base font-medium font-display">
@@ -58,7 +58,7 @@
             </div>
 
         </div>
-    @endempty
+    @endif
 
     @empty($items->count())
         <div class="flex flex-col items-center justify-center px-6 py-8 text-center">
