@@ -164,7 +164,7 @@ abstract class NebulaField
 
     public function shouldRender()
     {
-        return !($this instanceof HasMany);
+        return $this instanceof ShouldRender;
     }
 
     /**

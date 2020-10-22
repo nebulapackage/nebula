@@ -3,8 +3,9 @@
 namespace Larsklopstra\Nebula\Fields;
 
 use Larsklopstra\Nebula\Contracts\NebulaField;
+use Larsklopstra\Nebula\Contracts\ShouldRender;
 
-class Boolean extends NebulaField
+class Boolean extends NebulaField implements ShouldRender
 {
     protected string $true = 'True';
     protected string $false = 'False';
