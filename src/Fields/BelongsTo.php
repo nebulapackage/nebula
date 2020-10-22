@@ -3,11 +3,11 @@
 namespace Larsklopstra\Nebula\Fields;
 
 use Larsklopstra\Nebula\Contracts\NebulaField;
-use Larsklopstra\Nebula\Contracts\ShouldRender;
+use Larsklopstra\Nebula\Contracts\Listable;
 use Larsklopstra\Nebula\Fields\Concerns\HasHelperText;
 use Larsklopstra\Nebula\Fields\Concerns\HasResource;
 
-class BelongsTo extends NebulaField implements ShouldRender
+class BelongsTo extends NebulaField implements Listable
 {
     use HasHelperText, HasResource;
 

@@ -5,10 +5,10 @@ namespace Larsklopstra\Nebula\Fields;
 use Carbon\Carbon;
 use Carbon\Exceptions\InvalidFormatException;
 use Larsklopstra\Nebula\Contracts\NebulaField;
-use Larsklopstra\Nebula\Contracts\ShouldRender;
+use Larsklopstra\Nebula\Contracts\Listable;
 use Larsklopstra\Nebula\Fields\Concerns\HasHelperText;
 
-class Date extends NebulaField implements ShouldRender
+class Date extends NebulaField implements Listable
 {
     use HasHelperText;
 
