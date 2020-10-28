@@ -179,10 +179,11 @@ abstract class NebulaResource
     /**
      * The query for the index view.
      *
+     * @param Request $request
      * @return mixed
      * @throws Exception
      */
-    public function indexQuery()
+    public function indexQuery($request)
     {
         return $this->model()::query()
             ->withoutGlobalScopes()
@@ -194,9 +195,10 @@ abstract class NebulaResource
      *
      * @param mixed $model
      * @param mixed $data
+     * @param Request $request
      * @return void
      */
-    public function updateQuery($model, $data)
+    public function updateQuery($model, $data, $request)
     {
         $model->update($data);
     }
@@ -206,9 +208,11 @@ abstract class NebulaResource
      *
      * @param mixed $model
      * @param mixed $data
+     * @param Request $request
+     *
      * @return void
      */
-    public function storeQuery($model, $data)
+    public function storeQuery($model, $data, $request)
     {
         $model::create($data);
     }
