@@ -6,9 +6,7 @@ use Larsklopstra\Nebula\Http\Controllers\PageController;
 use Larsklopstra\Nebula\Http\Controllers\ResourceController;
 use Larsklopstra\Nebula\Http\Controllers\StartController;
 
-$routePrefix = config('nebula.prefix');
-
-Route::get("/$routePrefix", StartController::class)->name('start');
+Route::get('/', StartController::class)->name('start');
 
 Route::get('/dashboards/{dashboard}', [DashboardController::class, 'index'])->name('dashboards.index');
 
