@@ -5,6 +5,7 @@ namespace Larsklopstra\Nebula\Contracts;
 use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
+use Illuminate\Http\Request;
 
 abstract class NebulaResource
 {
