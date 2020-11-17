@@ -32,7 +32,7 @@ class ResourceController
         $filter = $request->query('filter');
         $search = $request->query('search');
 
-        $builder = $resource->indexQuery();
+        $builder = $resource->indexQuery($request);
 
         if (! empty($filter)) {
             $builder = $resource->resolveFilter($filter)->build($builder, $request);
@@ -105,7 +105,7 @@ class ResourceController
             $resource->editFields()
         ));
 
-        $resource->updateQuery($item, $validated);
+        $resource->updateQuery($item, $validated, $request);
 
         $this->toast(__(':Resource updated', [
             'resource' => $resource->singularName(),
@@ -147,7 +147,7 @@ class ResourceController
             $resource->createFields()
         ));
 
-        $resource->storeQuery($resource->model(), $validated);
+        $resource->storeQuery($resource->model(), $validated, $request);
 
         $this->toast(__(':Resource created', [
             'resource' => $resource->singularName(),
