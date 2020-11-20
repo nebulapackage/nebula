@@ -4,7 +4,7 @@ namespace Larsklopstra\Nebula\Fields;
 
 use Larsklopstra\Nebula\Contracts\NebulaField;
 
-class Color extends NebulaField
+class ColorField extends NebulaField
 {
     protected array $colors = [
         '#e02424',
