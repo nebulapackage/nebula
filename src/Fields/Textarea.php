@@ -6,7 +6,7 @@ use Larsklopstra\Nebula\Contracts\NebulaField;
 use Larsklopstra\Nebula\Fields\Concerns\HasHelperText;
 use Larsklopstra\Nebula\Fields\Concerns\HasPlaceholder;
 
-class Textarea extends NebulaField
+class TextareaField extends NebulaField
 {
     use HasPlaceholder, HasHelperText;
 }
