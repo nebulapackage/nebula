@@ -3,9 +3,10 @@
 namespace Larsklopstra\Nebula\Fields;
 
 use Larsklopstra\Nebula\Contracts\NebulaField;
+use Larsklopstra\Nebula\Contracts\Listable;
 use Larsklopstra\Nebula\Fields\Concerns\HasHelperText;
 
-class Select extends NebulaField
+class Select extends NebulaField implements Listable
 {
     use HasHelperText;
 

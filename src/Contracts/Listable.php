@@ -2,6 +2,6 @@
 
 namespace Larsklopstra\Nebula\Contracts;
 
-interface ShouldRender
+interface Listable
 {
 }

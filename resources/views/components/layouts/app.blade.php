@@ -18,7 +18,7 @@
     {{ $slot }}
 
     @if ($message = session('toast'))
-        <div class="fixed bottom-0 right-0 z-50 w-full max-w-xs m-3 pointer-events-none">
+        <div class="fixed bottom-0 left-0 z-50 w-full max-w-xs m-3 pointer-events-none">
 
             <div x-show.transition.duration.350ms="isOpen" x-data="{ isOpen: false }"
                 x-init="setTimeout(() => isOpen = true, 500)"

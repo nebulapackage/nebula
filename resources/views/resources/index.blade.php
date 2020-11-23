@@ -42,7 +42,7 @@
 
     </x-slot>
 
-    @empty(! $metrics = $resource->metrics())
+    @if($metrics = $resource->metrics())
         <div class="mb-8 space-y-4">
 
             <h2 class="text-base font-medium font-display">
@@ -58,7 +58,7 @@
             </div>
 
         </div>
-    @endempty
+    @endif
 
     @empty($items->count())
         <div class="flex flex-col items-center justify-center px-6 py-8 text-center">
@@ -92,10 +92,12 @@
                             <tr>
 
                                 @foreach ($resource->indexFields() as $field)
-                                    <th
-                                        class="px-4 py-2 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
-                                        {{ $field->getLabel() }}
-                                    </th>
+                                    @if($field->shouldRender())
+                                        <th
+                                            class="px-4 py-2 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
+                                            {{ $field->getLabel() }}
+                                        </th>
+                                    @endif
                                 @endforeach
 
                             </tr>
@@ -106,12 +108,14 @@
                                 <tr>
 
                                     @foreach ($resource->indexFields() as $field)
-                                        <td class="p-4 text-sm border-t border-gray-200">
-                                            <a href="{{ route('nebula.resources.show', [$resource->name(), $item]) }}">
-                                                <x-dynamic-component :item="$item" :component="$field->getTableComponent()"
-                                                    :field="$field" />
-                                            </a>
-                                        </td>
+                                        @if($field->shouldRender())
+                                            <td class="p-4 text-sm border-t border-gray-200">
+                                                <a href="{{ route('nebula.resources.show', [$resource->name(), $item]) }}">
+                                                    <x-dynamic-component :item="$item" :component="$field->getTableComponent()"
+                                                        :field="$field" />
+                                                </a>
+                                            </td>
+                                        @endif
                                     @endforeach
 
                                 </tr>

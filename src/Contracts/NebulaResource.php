@@ -17,6 +17,16 @@ abstract class NebulaResource
         return $this->searchable;
     }
 
+    public function title()
+    {
+        return 'name';
+    }
+
+    public function id()
+    {
+        return 'id';
+    }
+
     /**
      * Specifies the metrics which should be displayed.
      *
