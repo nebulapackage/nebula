@@ -67,8 +67,8 @@ class Nebula
     public static function availableResources()
     {
         return collect(static::$resources)
-            ->map(fn ($resource) => $resource instanceof NebulaResource ? $resource : new $resource)
             ->merge(config('nebula.resources'))
+            ->map(fn ($resource) => $resource instanceof NebulaResource ? $resource : new $resource)
             ->unique()
             ->toArray();
     }
@@ -81,8 +81,8 @@ class Nebula
     public static function availableDashboards()
     {
         return collect(static::$dashboards)
-            ->map(fn ($dashboard) => $dashboard instanceof NebulaDashboard ? $dashboard : new $dashboard)
             ->merge(config('nebula.dashboards'))
+            ->map(fn ($dashboard) => $dashboard instanceof NebulaDashboard ? $dashboard : new $dashboard)
             ->unique()
             ->toArray();
     }
@@ -95,8 +95,8 @@ class Nebula
     public static function availablePages()
     {
         return collect(static::$pages)
-            ->map(fn ($page) => $page instanceof NebulaPage ? $page : new $page)
             ->merge(config('nebula.pages'))
+            ->map(fn ($page) => $page instanceof NebulaPage ? $page : new $page)
             ->unique()
             ->toArray();
     }
